@@ -1,16 +1,149 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/** @format */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   box-sizing: border-box;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply dark:bg-primary-dark dark:text-secondary-white bg-primary-white text-secondary-gray p-0 m-0 font-Poppins;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply leading-7 text-2xl font-bold;
+  }
+  h1 {
+    @apply text-6xl tablet:text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  ul {
+    @apply list-none;
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  main {
+    @apply w-[80%] mx-auto px-16 py-0 tablet:w-full tablet:mt-12;
+  }
+
+  .section {
+    @apply mt-20 tablet:m-16;
+  }
+
+  .center {
+    @apply text-center items-center flex;
+  }
+
+  .link {
+    @apply relative cursor-pointer p-0 pb-1 hover:text-primary-blue dark:hover:text-secondary-blue before:content-[""] before:inline before:w-0 before:h-1 before:absolute before:bottom-0 before:bg-primary-blue dark:before:bg-secondary-blue before:transition-[width] before:duration-200 before:ease-in hover:before:w-full;
+  }
+
+  .btn {
+    @apply block cursor-pointer px-2 py-5 font-medium text-base lowercase transition-transform duration-200 ease-in-out;
+  }
+
+  .btn--outline {
+    @apply text-primary-blue dark:text-secondary-blue border-2 border-solid border-primary-blue dark:border-secondary-blue relative overflow-hidden z-[1] hover:text-primary-white dark:hover:text-secondary-white before:content-[""] before:absolute before:bottom-0 before:left-0 before:right-full before:bg-primary-blue dark:before:bg-secondary-blue before:-z-[1] before:transition-[right] before:duration-200 before:ease-in-out hover:before:right-0;
+  }
+
+  .btn--icon {
+    @apply p-0 hover:text-primary-blue dark:hover:text-secondary-blue active:translate-y-[-5px];
+  }
+}
+
+@layer components {
+  .header {
+    @apply h-32 w-full justify-between px-16 py-0 tablet:h-24;
+  }
+
+  .nav__list {
+    @apply flex mr-6 tablet:hidden tablet:flex-col tablet:justify-center tablet:items-center tablet:fixed tablet:inset-0 tablet:w-full tablet:h-full tablet:z-[2];
+  }
+
+  .nav__list-item {
+    @apply ml-6 tablet:my-2 tablet:mx-0;
+  }
+
+  .nav__hamburger {
+    @apply hidden tablet:flex tablet:z-[2] tablet:ml-3;
+  }
+
+  .scroll-to-top {
+    @apply fixed bottom-8 right-16 bg-transparent laptop:hidden text-primary-blue dark:text-primary-white cursor-pointer z-[2] transition-transform duration-200 ease-in-out;
+  }
+
+  /* Left Media */
+  .left-media {
+    @apply w-10 fixed bottom-0 left-10 right-auto z-10 laptop:left-5 laptop:right-auto tablet:hidden;
+  }
+
+  .left-list {
+    @apply flex flex-col items-center m-0 p-0  after:content-[""] after:block after:w-[1px] after:h-20 after:mx-auto after:bg-gray-500;
+  }
+
+  .left-list-item {
+    @apply last:mb-5;
+  }
+
+  .social-icon {
+    @apply p-3 text-gray-500 dark:hover:text-primary-white hover:text-primary-blue transition-colors duration-200 ease-in-out;
+  }
+
+  /* Right Media */
+  .right-media {
+    @apply w-10 fixed bottom-0 left-auto right-10 z-10 laptop:left-auto laptop:right-5 tablet:hidden;
+  }
+
+  .right-list {
+    @apply flex flex-col items-center relative text-gray-500 dark:hover:text-primary-white hover:text-primary-blue after:content-[""] after:block after:w-[1px] after:h-20 after:mx-auto after:bg-gray-500 transition-colors duration-200 ease-in-out;
+  }
+
+  .right-link {
+    @apply mx-auto my-5 p-2 tracking-widest inline-block;
+  }
+
+  .social-media {
+    @apply tablet:block tablet:w-full tablet:max-w-[270px] tablet:mt-0 tablet:mb-2 tablet:mx-auto hidden;
+  }
+
+  .social-media-list {
+    @apply flex justify-between items-center p-0 m-0;
+  }
+
+  .social-media-item {
+    @apply p-5;
+  }
+
+  .footer {
+    @apply flex justify-center items-center p-4 h-auto min-h-[70px] text-center flex-col;
+  }
 }
