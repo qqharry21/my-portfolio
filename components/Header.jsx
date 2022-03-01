@@ -3,18 +3,27 @@
 import React from 'react';
 import { Navbar } from '.';
 import Image from 'next/image';
-// import { useTheme } from 'next-themes';
+import { useMediaQuery } from 'react-responsive';
+import Link from 'next/link';
+
 const Header = () => {
-  // const { theme } = useTheme();
+  const isTablet = useMediaQuery({ query: '(max-width: 768px)' });
+
   return (
     <header className='header center'>
-      <a
-        className='mt-4 tablet:mt-12'
-        href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-        target='_blank'
-        rel='noopener noreferrer'>
-        <Image src='/hao.svg' alt='Logo' width={100} height={100} />
-      </a>
+      {isTablet ? (
+        <h1>
+          <Link href='/' className='link' shallow>
+            Hao Chen
+          </Link>
+        </h1>
+      ) : (
+        <Link className='mt-4 tablet:mt-12' href='/' shallow passHref>
+          <a>
+            <Image src='/hao.svg' alt='Logo' width={100} height={100} />
+          </a>
+        </Link>
+      )}
       <Navbar />
     </header>
   );

@@ -1,16 +1,18 @@
 /** @format */
 
 import Link from 'next/link';
+import { about } from '../data';
 
 const EmailBar = () => {
   return (
     <div className='right-media'>
       <div className='right-list '>
-        <Link href='#'>
-          <a className='right-link' style={{ writingMode: 'vertical-rl' }}>
-            qqharry21@gmail.com
-          </a>
-        </Link>
+        <a
+          className='right-link'
+          href={`mailto: ${about.email}`}
+          style={{ writingMode: 'vertical-rl' }}>
+          {about.email}
+        </a>
       </div>
     </div>
   );
