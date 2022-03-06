@@ -132,4 +132,39 @@ const Experience = () => {
   );
 };
 
+const ExperiencePanel = ({ child, index, activeTab }) => {
+  return (
+    <motion.div
+      className='experience-panel'
+      id={`experience-panel-${activeTab}`}
+      variants={panelVariants}
+      initial='hidden'
+      animate='show'
+      exit='exit'>
+      <h3 className='experience-panel-heading'>
+        <span>{activeExperience.title}</span>
+        <motion.span
+          className='text-primary-blue/50 dark:text-main/50'
+          variants={iconVariants}
+          initial='hidden'
+          animate='show'>
+          &nbsp;➤&nbsp;
+        </motion.span>
+        <Link href='https://matic.com'>
+          <a className='company-name'>{activeExperience.company}</a>
+        </Link>
+      </h3>
+      <p className='company-work-time'>{activeExperience.during}</p>
+
+      <motion.ul>
+        {activeExperience.descriptions.map((description, index) => (
+          <motion.li className='experience-description' key={index}>
+            {description}
+          </motion.li>
+        ))}
+      </motion.ul>
+    </motion.div>
+  );
+};
+
 export default Experience;
