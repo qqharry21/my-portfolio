@@ -1,8 +1,9 @@
 /** @format */
 
+import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { Header, EmailBar, Footer, ScrollToTop, SocialBar, Scrollbar } from '..';
-
+import { page } from '../../utils/animation/framerAnimations';
 const Layout = ({ children, currentPath }) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -12,7 +13,14 @@ const Layout = ({ children, currentPath }) => {
   if (!mounted) return null;
 
   return (
-    <div className='app' id='top'>
+    <motion.div
+      className='app'
+      id='top'
+      key='layout'
+      variants={page}
+      initial='hidden'
+      animate='show'
+      exit='exit'>
       <Header />
       <SocialBar />
       <EmailBar />
@@ -23,7 +31,7 @@ const Layout = ({ children, currentPath }) => {
 
       <ScrollToTop />
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

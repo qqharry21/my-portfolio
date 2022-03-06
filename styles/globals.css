@@ -11,7 +11,7 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth overflow-x-hidden;
   }
 
   body {
@@ -73,7 +73,7 @@
   }
 
   .btn--outline {
-    @apply text-primary-blue dark:text-main/70 border-2 border-solid border-primary-blue dark:border-main/70 relative overflow-hidden z-[1] hover:text-primary-dark dark:hover:text-primary-dark focus:text-primary-dark dark:focus:text-primary-dark before:content-[""] before:absolute dark:before:bg-main/70 before:bottom-0 before:left-0 before:top-0 before:right-full  before:hover:right-0 before:focus:right-0 before:-z-[1] before:transition-[right] before:duration-200 before:ease-in-out;
+    @apply text-primary-blue dark:text-main/70 border-2 border-solid border-primary-blue dark:border-main/70 relative overflow-hidden z-[1] hover:text-primary-white dark:hover:text-primary-dark focus:text-primary-white dark:focus:text-primary-dark before:content-[""] before:absolute dark:before:bg-main/70 before:bg-primary-blue before:bottom-0 before:left-0 before:top-0 before:right-full before:hover:right-0 before:focus:right-0 before:-z-[1] before:transition-[right] before:duration-200 before:ease-in-out;
   }
 
   .btn--icon {
@@ -83,7 +83,7 @@
 
 @layer components {
   .header {
-    @apply h-32 w-full justify-between px-16 py-0 absolute tablet:h-24 tablet:px-12;
+    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 tablet:px-12 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
   }
 
   .selected {
@@ -91,7 +91,7 @@
   }
 
   .nav__list {
-    @apply flex mr-6 tablet:hidden tablet:flex-col tablet:justify-center tablet:items-center tablet:fixed tablet:inset-0 tablet:w-full tablet:h-full tablet:z-30 tablet:bg-primary-dark;
+    @apply flex mr-6 tablet:hidden tablet:flex-col tablet:justify-center tablet:items-center tablet:fixed tablet:inset-0 tablet:w-full tablet:h-screen tablet:z-40 dark:tablet:bg-primary-dark tablet:bg-primary-white tablet:text-primary-dark dark:tablet:text-primary-white;
   }
 
   .nav__list-item {
@@ -157,11 +157,11 @@
 
   /** Section */
   .section-container {
-    @apply tablet:flex-col min-h-screen justify-center px-6 flex flex-col m-auto;
+    @apply tablet:flex-col min-h-screen justify-center px-6 flex flex-col m-auto mt-10;
   }
 
   .section-heading {
-    @apply flex items-center relative mt-2 mb-10 text-4xl mx-auto w-full whitespace-nowrap before:relative before:content-["•"] before:mr-2 before:font-normal dark:before:text-main before:text-primary-blue before:justify-center before:items-center after:content-[""] after:block after:relative after:w-[300px] after:h-[1px] after:ml-5 after:bg-gray-500 tablet:after:ml-2;
+    @apply flex items-center relative mt-2 mb-10 text-4xl mx-auto w-full whitespace-nowrap before:relative before:content-["•"] before:mr-2 before:font-normal dark:before:text-main before:text-primary-blue before:justify-center before:items-center after:content-[""] after:block after:relative after:w-[300px] after:h-[1px] after:ml-5 after:bg-gray-500 tablet:after:ml-2 tablet:text-3xl mobile:!text-2xl;
   }
 
   /** Hero */
@@ -176,7 +176,7 @@
 
   .hero-title {
     @apply tracking-wide m-0 text-8xl laptop:text-7xl
-      mobile:!text-3xl;
+      mobile:!text-[55px];
   }
 
   .hero-subtitle {
@@ -184,7 +184,7 @@
   }
 
   .hero-description {
-    @apply tracking-wide dark:text-secondary-white/40 mt-5 mx-0 mb-0 max-w-3xl mobile:text-base;
+    @apply tracking-wide dark:text-secondary-white/40 mt-5 mx-0 mb-0 max-w-3xl mobile:text-lg tablet:pr-1;
   }
 
   .hero-resume {
@@ -223,15 +223,56 @@
 
   /** Scrollbar */
   .scrollbar-container {
-    @apply m-0 p-0 fixed right-10 top-[50%] translate-y-[-50%] z-30 left-auto tablet:right-1 tablet:w-10;
+    @apply m-0 p-0 fixed right-10 top-[50%] translate-y-[-50%] z-[24] left-auto tablet:right-1 tablet:w-10;
   }
 
   .scrollbar-item {
-    @apply w-2 h-2 bg-main/80 rounded-full m-5 border-2 border-solid border-primary-gray cursor-pointer transition-transform duration-200 hover:bg-none hover:scale-[2];
+    @apply w-2 h-2 dark:bg-main/80 bg-primary-blue rounded-full m-5 border-2 border-solid dark:border-primary-gray border-gray-300 cursor-pointer transition-transform duration-500 hover:bg-none hover:scale-[2];
+  }
+
+  /** Loader */
+  .loader {
+    @apply h-screen z-50 bg-primary-white dark:bg-primary-dark text-white flex justify-center items-center;
   }
 
   /** Experience */
   .experience-content {
-    @apply flex min-h-[340px] tablet:block;
+    @apply flex min-h-[340px] mobile:block;
+  }
+
+  .tab-list {
+    @apply relative z-[3] w-max p-0 m-0 mobile:flex mobile:overflow-x-auto mobile:w-[calc(100%+100px)] mobile:pl-[50px] mobile:ml-[-50px] mobile:mb-8;
+  }
+
+  .experience-tab {
+    @apply text-gray-500 relative flex items-center w-full h-10 px-5 mobile:px-4 pt-0 pb-1 text-left border-gray-300 dark:border-gray-500 border-l-2 mobile:border-b-2 mobile:border-l-0 border-solid rounded-r-md focus:rounded-r-md hover:rounded-r-md mobile:rounded-t-md mobile:focus:rounded-t-md mobile:hover:rounded-t-md mobile:rounded-b-none mobile:focus:rounded-b-none mobile:hover:rounded-b-none whitespace-nowrap cursor-pointer hover:text-primary-blue/70 focus:text-primary-blue focus:border-primary-blue dark:hover:text-main/70 dark:focus:text-main dark:focus:border-main;
+  }
+
+  .active-tab {
+    @apply dark:text-main rounded-r-md mobile:rounded-t-md mobile:rounded-b-none outline-none dark:border-main dark:bg-main/20 text-primary-blue border-primary-blue bg-primary-blue/20;
+  }
+
+  .experience-wrapper {
+    @apply ml-5 w-full relative;
+  }
+
+  .experience-panel {
+    @apply w-full h-auto py-2 px-1 mobile:ml-0;
+  }
+
+  .experience-panel-heading {
+    @apply mb-3 font-medium leading-5 tablet:text-xl mobile:!text-lg;
+  }
+
+  .company-name {
+    @apply font-bold text-primary-blue dark:text-main;
+  }
+
+  .company-work-time {
+    @apply font-medium mb-6 text-gray-500 flex;
+  }
+
+  .experience-description {
+    @apply relative mb-2 before:content-["▹"] pl-8 before:absolute before:left-0 dark:before:text-main/70 before:text-primary-blue text-gray-600/80 dark:text-primary-white/60;
   }
 }

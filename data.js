@@ -20,20 +20,54 @@ export const about = {
   },
 };
 
-export const experience = [
+export const experiences = [
   {
     company: 'Matic',
     title: 'Java Engineer',
     location: 'Neihu, Taipei',
-    dates: 'Jul 2020 - Present',
-    description: [],
+    during: 'Jul 2020 - Present',
+    descriptions: [
+      'Write modern, performant, maintainable code for a diverse array of client and internal projects',
+      'Work with a variety of different languages, platforms, frameworks, and content management systems such as JavaScript, TypeScript, Gatsby, React, Craft, WordPress, Prismic, and Netlify',
+    ],
   },
   {
-    company: 'Matic',
+    company: 'Apple ',
+    title: 'Java Engineer',
+    location: 'Tamkung, New Taipei',
+    during: 'Jul 2019 - Jul 2020 ',
+    descriptions: [
+      'Write modern, performant, maintainable code for a diverse array of client and internal projects',
+      'Work with a variety of different languages, platforms, frameworks, and content management systems such as JavaScript, TypeScript, Gatsby, React, Craft, WordPress, Prismic, and Netlify',
+    ],
+  },
+  {
+    company: 'Apple Mac',
     title: 'Java Engineer',
     location: 'Neihu, Taipei',
-    dates: 'Jul 2020 - Present',
-    description: [],
+    during: 'Jul 2020 - Present',
+    descriptions: [],
+  },
+  {
+    company: 'Apple Mac',
+    title: 'Java Engineer',
+    location: 'Neihu, Taipei',
+    during: 'Jul 2020 - Present',
+    descriptions: [],
+  },
+  {
+    company: 'Apple Mac',
+    title: 'Java Engineer',
+    location: 'Neihu, Taipei',
+    during: 'Jul 2020 - Present',
+    descriptions: [],
+  },
+  {
+    company: 'Apple Mac',
+    title: 'Java Engineer',
+    location: 'Neihu, Taipei',
+    during: 'Jul 2020 - Present',
+    descriptions: [],
   },
 ];
 

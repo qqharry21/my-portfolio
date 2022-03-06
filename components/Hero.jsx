@@ -1,11 +1,13 @@
 /** @format */
 
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 import { about } from '../data';
 
 const Hero = () => {
+  const { ref, inView } = useInView();
   return (
-    <section className='hero-container' id='home'>
+    <section className='hero-container' id='home' ref={ref}>
       <div>
         <h4 className='hero-head'>Hi, my name is</h4>
       </div>

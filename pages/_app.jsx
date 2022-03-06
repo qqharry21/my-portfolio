@@ -4,11 +4,14 @@ import Layout from '../components/layout/Layout';
 import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  const [currentPath, setCurrentPath] = useState(router.pathname);
+import { Meta, Loader } from '../components';
+
+function MyApp({ Component, pageProps, router }) {
+  const routers = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [currentPath, setCurrentPath] = useState(routers.pathname);
 
   useEffect(() => {
     const handleRouteChange = url => {
@@ -23,14 +26,23 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem='true'>
-      <Layout currentPath={currentPath}>
+      <AnimateSharedLayout type='crossfade'>
         <AnimatePresence
           exitBeforeEnter
-          initial={false}
+          initial={true}
           onExitComplete={() => window.scrollTo(0, 0)}>
-          <Component {...pageProps} />
+          {loading ? (
+            <motion.div key='loader' id='loader'>
+              <Meta />
+              <Loader setLoading={setLoading} />
+            </motion.div>
+          ) : (
+            <Layout currentPath={currentPath}>
+              <Component {...pageProps} key={router.route} />
+            </Layout>
+          )}
         </AnimatePresence>
-      </Layout>
+      </AnimateSharedLayout>
     </ThemeProvider>
   );
 }

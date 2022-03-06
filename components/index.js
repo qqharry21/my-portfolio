@@ -14,3 +14,4 @@ export { default as SocialBar } from './SocialBar';
 export { default as SocialIcon } from './SocialIcon';
 export { default as EmailBar } from './EmailBar';
 export { default as Scrollbar } from './Scrollbar';
+export { default as Loader } from './Loader';

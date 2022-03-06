@@ -1,31 +1,102 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from '.';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
 
 const Header = () => {
+  const { systemTheme, theme, setTheme } = useTheme();
   const isTablet = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastYPos, setLastYPos] = useState(0);
+  const [showMediaNavbar, setShowMediaNavbar] = useState(false);
+
+  const toggleMediaNavbar = () => {
+    setShowMediaNavbar(prev => !prev);
+  };
+
+  const toggleTheme = () => {
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+
+    if (currentTheme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const yPos = window.scrollY;
+      const isScrollingUp = yPos < lastYPos;
+      setIsVisible(isScrollingUp);
+      setLastYPos(yPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastYPos, showMediaNavbar]);
+
+  useEffect(() => {
+    const body = document.querySelector('html');
+    if (showMediaNavbar) {
+      body.style.overflowY = 'hidden';
+    } else {
+      body.style.overflowY = 'scroll';
+    }
+  }, [showMediaNavbar]);
+
+  // framer motion config
+  const headerContainer = {
+    hidden: { y: 0 },
+    show: {
+      y: isVisible ? 0 : '-50vh',
+      transition: {
+        ease: 'easeInOut',
+        duration: 0.4,
+        delay: !isVisible && 0.15,
+      },
+    },
+  };
 
   return (
-    <header className='header center'>
+    <motion.header
+      className={`header center ${lastYPos > 0 && 'shadow-md'}`}
+      variants={headerContainer}
+      initial='hidden'
+      animate='show'>
       {isTablet ? (
         <h1>
           <Link href='/' className='link' shallow>
-            Hao Chen
+            Hao
           </Link>
         </h1>
       ) : (
         <Link className='mt-4 tablet:mt-12' href='/' shallow passHref>
           <a>
-            <Image src='/hao.svg' alt='Logo' width={100} height={100} />
+            {theme === 'light' ? (
+              <Image src='/light_logo.svg' alt='Logo' width={100} height={100} />
+            ) : (
+              <Image src='/dark_logo.svg' alt='Logo' width={100} height={100} />
+            )}
           </a>
         </Link>
       )}
-      <Navbar />
-    </header>
+      <Navbar
+        theme={theme}
+        toggleTheme={toggleTheme}
+        isTablet={isTablet}
+        showMediaNavbar={showMediaNavbar}
+        toggleMediaNavbar={toggleMediaNavbar}
+      />
+    </motion.header>
   );
 };
 
