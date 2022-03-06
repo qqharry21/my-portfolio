@@ -10,6 +10,7 @@ export { default as About } from './About';
 export { default as Project } from './Project';
 export { default as Contact } from './Contact';
 export { default as Experience } from './Experience';
+export { default as ExperiencePanel } from './ExperiencePanel';
 export { default as SocialBar } from './SocialBar';
 export { default as SocialIcon } from './SocialIcon';
 export { default as EmailBar } from './EmailBar';
