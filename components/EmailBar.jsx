@@ -1,18 +1,39 @@
 /** @format */
 
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { about } from '../data';
+import { easing } from '../utils/animation/framerAnimations';
+
+const container = {
+  hidden: { opacity: 0, y: 200 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: easing,
+      delay: 0.2,
+      duration: 1.5,
+    },
+  },
+};
 
 const EmailBar = () => {
   return (
-    <div className='right-media'>
+    <motion.div
+      key='email-bar'
+      className='right-media'
+      variants={container}
+      initial='hidden'
+      animate='show'>
       <div className='right-list '>
-        <Link href='#'>
+        <Link href={`mailto: ${about.email}`}>
           <a className='right-link' style={{ writingMode: 'vertical-rl' }}>
-            qqharry21@gmail.com
+            {about.email}
           </a>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,15 +1,15 @@
 /** @format */
-
-import { About, Contact, Experience, Meta, Project } from '../components';
-
+import React, { useState, useEffect } from 'react';
+import { About, Contact, Experience, Hero, Meta, Project } from '../components';
 export default function Home() {
   return (
-    <div>
+    <>
       <Meta />
+      <Hero />
       <About />
       <Experience />
       <Project />
       <Contact />
-    </div>
+    </>
   );
 }

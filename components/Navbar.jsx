@@ -1,11 +1,13 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
-// import { useTheme } from '../context/themeContext';
-import { useTheme } from 'next-themes';
+import React from 'react';
 import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { BiMenuAltRight } from 'react-icons/bi';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../utils/animation/framerAnimations';
+import PropTypes from 'prop-types';
+
 const navList = [
   {
     title: 'About',
@@ -25,75 +27,90 @@ const navList = [
   },
 ];
 
-const Navbar = () => {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const [showMediaNavbar, setShowMediaNavbar] = useState(false);
-  const [mounted, setMounted] = useState(false);
+const navItem = {
+  hidden: { opacity: 0, translateX: 100, translateY: -100 },
+  show: {
+    opacity: 1,
+    translateX: 0,
+    translateY: 0,
+  },
+};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const toggleTheme = () => {
-    const currentTheme = theme === 'system' ? systemTheme : theme;
-    console.log('currentTheme', currentTheme);
-
-    if (currentTheme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
+const Navbar = ({ theme, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
+  const navListContainer = {
+    hidden: {
+      top: '-60vh',
+    },
+    show: {
+      top: 0,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.2,
+        ease: 'easeInOut',
+      },
+    },
   };
-
-  const toggleMediaNavbar = () => {
-    setShowMediaNavbar(prev => !prev);
-  };
-
-  if (!mounted) return null;
 
   return (
     <nav className='center nav'>
-      <ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
+      <motion.ul
+        className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}
+        // variants={navListContainer}
+        // animate={showMediaNavbar ? 'show' : 'hidden'}
+      >
         {navList.map((list, index) => {
-          return <NavbarItem key={index} {...list} toggleMediaNavbar={toggleMediaNavbar} />;
+          return (
+            <NavbarItem key={index} {...list} index={index} toggleMediaNavbar={toggleMediaNavbar} />
+          );
         })}
-      </ul>
+      </motion.ul>
 
-      <button
+      <motion.button
         type='button'
+        variants={fadeIn}
         onClick={toggleTheme}
         className='btn btn--icon nav__theme'
         aria-label='toggle theme'>
         {theme === 'light' ? (
-          <IoMdMoon size={24} className='text-primary-blue dark:text-secondary-white' />
+          <IoMdMoon size={24} className='text-primary-blue dark:text-main' />
         ) : (
-          <IoMdSunny size={24} className='text-primary-blue dark:text-secondary-white' />
+          <IoMdSunny size={24} className='text-primary-blue dark:text-main' />
         )}
-      </button>
+      </motion.button>
 
-      <button
+      <motion.button
         type='button'
+        variants={fadeIn}
         onClick={toggleMediaNavbar}
         className='btn btn--icon nav__hamburger'
         aria-label='toggle navigation'>
         {showMediaNavbar ? (
-          <IoClose size={24} className='text-primary-blue dark:text-secondary-white' />
+          <IoClose size={24} className='text-primary-blue dark:text-main' />
         ) : (
-          <BiMenuAltRight size={24} className='text-primary-blue dark:text-secondary-white' />
+          <BiMenuAltRight size={24} className='text-primary-blue dark:text-main' />
         )}
-      </button>
+      </motion.button>
     </nav>
   );
 };
 
-const NavbarItem = ({ toggleMediaNavbar, title, action }) => {
+const NavbarItem = ({ toggleMediaNavbar, title, href, index }) => {
   return (
-    <li className='nav__list-item'>
-      <a href={action} onClick={toggleMediaNavbar} className='link link--nav'>
+    <motion.li
+      className='nav__list-item'
+      key={title}
+      variants={navItem}
+      transition={{ delay: 0.1 * index, ease: 'easeIn' }}>
+      <a href={href} onClick={toggleMediaNavbar} className='link link--nav'>
         {title}
       </a>
-    </li>
+    </motion.li>
   );
+};
+
+navList.propsTypes = {
+  title: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 export default Navbar;

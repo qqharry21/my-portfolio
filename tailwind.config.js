@@ -7,9 +7,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     screens: {
-      mobile: { max: '480px' },
+      mobile: { max: '550px' },
       tablet: { max: '768px' },
-      laptop: { max: '976px' },
+      laptop: { max: '1024px' },
       desktop: { max: '1280px' },
     },
     fontFamily: {
@@ -108,6 +108,7 @@ module.exports = {
         900: '#652B19',
         'tag-bg-dark': ' rgba(251, 211, 141, 0.1)',
       },
+      main: '#64ffda',
       primary: {
         dark: '#23283e',
         white: '#e2e8f0',
