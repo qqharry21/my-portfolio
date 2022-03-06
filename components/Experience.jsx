@@ -7,42 +7,6 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
-const iconVariants = {
-  hidden: {
-    opacity: 0.5,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      duration: 3,
-      ease: 'easeInOut',
-      // repeat: Infinity,
-    },
-  },
-  exit: {
-    opacity: 0.5,
-    transition: {
-      duration: 1,
-      ease: 'easeInOut',
-    },
-  },
-};
-
-const panelVariants = {
-  hidden: {
-    opacity: 0,
-    translateX: '50vw',
-  },
-  show: {
-    opacity: 1,
-    translateX: 0,
-    transition: {
-      duration: 1,
-      ease: 'easeInOut',
-    },
-  },
-};
-
 const Experience = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [activeExperience, setActiveExperience] = useState(experiences[0]);
@@ -61,29 +25,37 @@ const Experience = () => {
       });
     }
     if (!inView) {
-      animation.start({ opacity: 0, translateX: '50vw' });
+      animation.start({ opacity: 0 });
     }
   }, [inView]);
 
   const toggleTab = index => {
     const tabs = document.querySelectorAll('.experience-tab');
-    tabs[activeTab].classList.remove('active-tab');
     tabs[index].classList.add('active-tab');
+
+    tabs[activeTab].classList.remove('active-tab');
     setActiveTab(index);
-    setActiveExperience(experiences[index]);
   };
 
   useEffect(() => {
-    toggleTab(activeTab);
+    setActiveTab(activeTab);
   }, []);
 
+  useEffect(() => {
+    setActiveExperience(experiences[activeTab]);
+  }, [activeTab]);
+
   return (
-    <motion.section className='section-container px-32 laptop:px-4' id='experience'>
+    <motion.section
+      className='section-container px-32 laptop:px-4'
+      id='experience'
+      ref={ref}
+      animate={animation}>
       <h2 className='section-heading'>My Experience</h2>
       <div className='experience-content'>
-        <div className='tab-list'>
+        <motion.div className='tab-list'>
           {experiences.map((item, index) => (
-            <button
+            <motion.button
               className='experience-tab'
               id={`tab-${index}`}
               key={index}
@@ -91,25 +63,30 @@ const Experience = () => {
               onClick={() => {
                 toggleTab(index);
               }}>
+              {index === activeTab ? (
+                <motion.div
+                  className='slider-tab'
+                  key={index}
+                  layoutId='slider-tab'
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                />
+              ) : null}
               <span>{item.company}</span>
-            </button>
+            </motion.button>
           ))}
-        </div>
-        <motion.div className='experience-wrapper' ref={ref} animate={animation}>
+        </motion.div>
+        <motion.div className='experience-wrapper'>
           <motion.div
             className='experience-panel'
-            id={`experience-panel-${activeTab}`}
-            variants={panelVariants}
+            id={`${activeExperience.company}`}
+            variants={wrapperVariants}
             initial='hidden'
             animate='show'
-            exit='exit'>
+            exit='exit'
+            key={activeExperience.company}>
             <h3 className='experience-panel-heading'>
               <span>{activeExperience.title}</span>
-              <motion.span
-                className='text-primary-blue/50 dark:text-main/50'
-                variants={iconVariants}
-                initial='hidden'
-                animate='show'>
+              <motion.span className='text-primary-blue/50 dark:text-main/50'>
                 &nbsp;➤&nbsp;
               </motion.span>
               <Link href='https://matic.com'>
@@ -130,6 +107,29 @@ const Experience = () => {
       </div>
     </motion.section>
   );
+};
+
+const wrapperVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: 'easeInOut',
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.3,
+      ease: 'easeInOut',
+    },
+  },
 };
 
 export default Experience;

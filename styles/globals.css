@@ -218,7 +218,7 @@
   }
 
   .about-wrapper {
-    @apply relative mx-auto items-center justify-center max-w-max after:absolute after:border-2 after:border-solid after:border-primary-blue dark:after:border-main after:w-full after:h-full after:top-5 after:left-7 after:content-[""] after:-z-20 after:transition-all after:duration-200 after:ease-in-out after:hover:translate-x-[-8px] after:hover:translate-y-[-8px] after:hover:border-gray-500 dark:after:hover:border-primary-white;
+    @apply relative mx-auto items-center justify-center max-w-max border-2 after:absolute after:border-2 after:border-solid after:hover:border-primary-blue dark:after:hover:border-main after:w-full after:h-full after:top-7 after:left-7 after:content-[""] after:-z-20 after:transition-all after:duration-200 after:ease-in-out after:hover:translate-x-[-8px] after:hover:translate-y-[-8px] after:border-gray-500 dark:after:border-primary-white;
   }
 
   /** Scrollbar */
@@ -245,11 +245,15 @@
   }
 
   .experience-tab {
-    @apply text-gray-500 relative flex items-center w-full h-10 px-5 mobile:px-4 pt-0 pb-1 text-left border-gray-300 dark:border-gray-500 border-l-2 mobile:border-b-2 mobile:border-l-0 border-solid rounded-r-md focus:rounded-r-md hover:rounded-r-md mobile:rounded-t-md mobile:focus:rounded-t-md mobile:hover:rounded-t-md mobile:rounded-b-none mobile:focus:rounded-b-none mobile:hover:rounded-b-none whitespace-nowrap cursor-pointer hover:text-primary-blue/70 focus:text-primary-blue focus:border-primary-blue dark:hover:text-main/70 dark:focus:text-main dark:focus:border-main;
+    @apply text-gray-500 relative flex items-center w-full h-10 px-5 mobile:px-4 pt-0 pb-1 mobile:pb-0 text-left border-gray-300 dark:border-gray-500 border-l-2 mobile:border-b-2 mobile:border-l-0 border-solid rounded-r-md  hover:rounded-r-md  mobile:rounded-r-none mobile:hover:rounded-t-md  mobile:hover:rounded-b-none whitespace-nowrap cursor-pointer hover:text-primary-blue/70 focus:text-primary-blue  dark:hover:text-main/70 dark:focus:text-main;
   }
 
   .active-tab {
-    @apply dark:text-main rounded-r-md mobile:rounded-t-md mobile:rounded-b-none outline-none dark:border-main dark:bg-main/20 text-primary-blue border-primary-blue bg-primary-blue/20;
+    @apply dark:text-main text-primary-blue;
+  }
+
+  .slider-tab {
+    @apply z-[5] absolute left-[-2px] mobile:left-0 right-0 h-10 bottom-0 mobile:bottom-[-2px] border-l-2 mobile:border-l-0 mobile:border-b-2 w-full dark:bg-main/20 dark:border-main dark:focus:border-main bg-primary-blue/20 border-primary-blue focus:border-primary-blue rounded-r-md mobile:rounded-t-md mobile:rounded-b-none mobile:focus:rounded-t-md focus:rounded-r-md mobile:focus:rounded-b-none;
   }
 
   .experience-wrapper {

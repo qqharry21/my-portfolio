@@ -53,6 +53,7 @@ const Scrollbar = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     handleClick();
+    scrollSpy();
   }, []);
 
   useEffect(() => {
