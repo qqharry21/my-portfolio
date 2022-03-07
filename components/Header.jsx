@@ -45,11 +45,11 @@ const Header = () => {
   }, [lastYPos, showMediaNavbar]);
 
   useEffect(() => {
-    const body = document.querySelector('html');
+    const html = document.querySelector('html');
     if (showMediaNavbar) {
-      body.style.overflowY = 'hidden';
+      html.style.overflowY = 'hidden';
     } else {
-      body.style.overflowY = 'scroll';
+      html.style.overflowY = 'scroll';
     }
   }, [showMediaNavbar]);
 
@@ -60,8 +60,8 @@ const Header = () => {
       y: isVisible ? 0 : '-50vh',
       transition: {
         ease: 'easeInOut',
-        duration: 0.4,
-        delay: !isVisible && 0.15,
+        duration: 0.3,
+        delay: !isVisible && 0.1,
       },
     },
   };
