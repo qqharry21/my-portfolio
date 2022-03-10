@@ -46,7 +46,7 @@ const Header = () => {
 
   useEffect(() => {
     const html = document.querySelector('html');
-    if (showMediaNavbar) {
+    if (showMediaNavbar && isTablet) {
       html.style.overflowY = 'hidden';
     } else {
       html.style.overflowY = 'scroll';

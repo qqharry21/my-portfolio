@@ -1,6 +1,5 @@
 /** @format */
 
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { about } from '../data';
 import { motion, useAnimation } from 'framer-motion';
@@ -67,7 +66,7 @@ const About = () => {
         </motion.div>
         <motion.div className='about-right'>
           <motion.div
-            className={`about-wrapper group  ${
+            className={`about-wrapper group after:shadow-xl ${
               theme === 'light'
                 ? 'border-primary-blue hover:border-gray-500'
                 : 'border-main hover:border-primary-white'
@@ -75,7 +74,6 @@ const About = () => {
             animate={{ rotate: [2, -2] }}
             transition={{
               repeat: Infinity,
-
               repeatType: 'reverse',
               ease: 'easeInOut',
             }}>
@@ -94,13 +92,9 @@ const About = () => {
   );
 };
 
-const template = ({ rotateY, rotateX }) => {
-  return `perspective(800px) rotateX(${rotateX}) rotateY(${rotateY})`;
-};
-
 const Selfie = ({ theme, isMobile }) => {
   return (
-    <motion.div className=' dark:group-hover:bg-main group-hover:bg-primary-blue dark:bg-primary-white bg-primary-dark/80 transition-colors duration-200 ease-in-out pointer-events-none'>
+    <motion.div className=' dark:group-hover:bg-main group-hover:bg-primary-blue dark:bg-primary-white bg-primary-dark/80 transition-colors duration-200 ease-in-out pointer-events-none shadow-xl'>
       <svg
         version='1.0'
         xmlns='http://www.w3.org/2000/svg'

@@ -42,7 +42,7 @@ const Hero = () => {
       </div>
       <div>
         <a>
-          <span typeof='button' className='btn btn--outline hero-resume px-10'>
+          <span typeof='button' className='btn btn--outline hero-resume px-10 rounded-sm'>
             View my resume
           </span>
         </a>

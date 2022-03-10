@@ -1,7 +1,10 @@
 /** @format */
 import React, { useState, useEffect } from 'react';
 import { About, Contact, Experience, Hero, Meta, Project } from '../components';
-export default function Home() {
+
+export default function Home({ project }) {
+  console.log('project', project);
+
   return (
     <>
       <Meta />
@@ -13,3 +16,14 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const res = await fetch('https://api.github.com/users/qqharry21/repos');
+  const data = await res.json();
+
+  return {
+    props: {
+      project: data,
+    },
+  };
+};

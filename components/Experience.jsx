@@ -36,7 +36,8 @@ const Experience = () => {
   };
 
   useEffect(() => {
-    setActiveTab(activeTab);
+    const tabs = document.querySelectorAll('.experience-tab');
+    tabs[activeTab].classList.add('active-tab');
   }, []);
 
   useEffect(() => {
