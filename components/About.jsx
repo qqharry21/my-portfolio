@@ -1,5 +1,6 @@
 /** @format */
 
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { about } from '../data';
 import { motion, useAnimation } from 'framer-motion';
@@ -98,8 +99,8 @@ const Selfie = ({ theme, isMobile }) => {
       <svg
         version='1.0'
         xmlns='http://www.w3.org/2000/svg'
-        width={isMobile ? 192 : 384}
-        height={isMobile ? 192 : 384}
+        width={isMobile ? 200 : 384}
+        height={isMobile ? 200 : 384}
         viewBox='0 0 1028.000000 1028.000000'
         preserveAspectRatio='xMidYMid meet'>
         <g

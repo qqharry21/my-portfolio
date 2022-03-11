@@ -1,7 +1,6 @@
 /** @format */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { About, Contact, Experience, Hero, Meta, Project } from '../components';
-
 export default function Home({ project }) {
   console.log('project', project);
 

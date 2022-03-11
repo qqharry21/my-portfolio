@@ -27,10 +27,7 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem='true'>
       <AnimateSharedLayout type='crossfade'>
-        <AnimatePresence
-          exitBeforeEnter
-          initial={true}
-          onExitComplete={() => window.scrollTo(0, 0)}>
+        <AnimatePresence onExitComplete={() => window.scrollTo(0, 0)}>
           {loading ? (
             <motion.div key='loader' id='loader'>
               <Meta />

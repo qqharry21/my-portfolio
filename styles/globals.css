@@ -87,7 +87,7 @@
 
 @layer components {
   .header {
-    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 tablet:px-12 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
+    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 mobile:!h-16 tablet:px-12 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
   }
 
   .selected {
@@ -309,7 +309,7 @@
 
   .project-title {
     @apply text-primary-dark/90 dark:text-primary-white/90
-    tablet:text-primary-dark dark:tablet:text-primary-white font-semibold leading-5 mb-5 tablet:mb-0;
+    tablet:text-primary-dark dark:tablet:text-primary-white font-semibold leading-7 mb-5 tablet:mb-0;
   }
 
   .project-title-link {
@@ -343,6 +343,31 @@
 
   .project-image {
     @apply shadow-lg row-[1/-1] col-[6/-1] relative z-[1] tablet:opacity-25 tablet:h-full tablet:col-[1/-1] group-odd:col-[1/8] w-full h-full tablet:group-odd:col-[1/-1] hover:shadow-md focus:outline-none focus:outline-offset-0 transition-shadow duration-500 ease-in-out before:content-[""] before:w-full before:h-full before:absolute before:z-[2] before:inset-0 dark:before:bg-[#2d303e] before:bg-gray-500 before:mix-blend-multiply;
+  }
+
+  /**  */
+  .contact-content {
+    @apply grid grid-cols-2 gap-10 laptop:block;
+  }
+
+  .contact-left {
+    @apply min-w-max justify-center items-center mx-auto max-w-xs laptop:my-10;
+  }
+
+  .contact-right {
+    @apply text-xl grid gap-5 text-primary-gray dark:text-primary-white;
+  }
+
+  .contact-title {
+    @apply font-semibold text-primary-dark/80 dark:text-primary-white/80 text-5xl mb-5 tablet:text-4xl mobile:!text-2xl tablet:text-center;
+  }
+
+  .contact-description {
+    @apply leading-8 text-gray-500 tablet:text-xl mobile:!text-base tablet:text-center;
+  }
+
+  .contact-image {
+    /* @apply relative mx-auto; */
   }
 
   /* group-odd:border-primary-blue

@@ -96,8 +96,8 @@ const Project = () => {
         })}
       </ul>
       <Link href='/projects'>
-        <a className='flex mx-auto mb-5'>
-          <button className='btn btn--outline px-5 capitalize rounded-sm flex '>
+        <a className='flex mx-auto'>
+          <button className='btn btn--outline px-5 capitalize rounded-md flex '>
             See More
             <motion.div
               className='flex items-center justify-center m-auto'
