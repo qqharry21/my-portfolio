@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { experiences } from '../data';
-import { motion, useAnimation } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
@@ -12,7 +11,6 @@ const Experience = () => {
   const [activeExperience, setActiveExperience] = useState(experiences[0]);
   const { ref, inView } = useInView();
   const animation = useAnimation();
-
   useEffect(() => {
     if (inView) {
       animation.start({
@@ -31,14 +29,15 @@ const Experience = () => {
 
   const toggleTab = index => {
     const tabs = document.querySelectorAll('.experience-tab');
+    tabs[activeTab].classList.remove('active-tab');
     tabs[index].classList.add('active-tab');
 
-    tabs[activeTab].classList.remove('active-tab');
     setActiveTab(index);
   };
 
   useEffect(() => {
-    setActiveTab(activeTab);
+    const tabs = document.querySelectorAll('.experience-tab');
+    tabs[activeTab].classList.add('active-tab');
   }, []);
 
   useEffect(() => {
@@ -64,69 +63,73 @@ const Experience = () => {
                 toggleTab(index);
               }}>
               {index === activeTab ? (
-                <motion.div
-                  className='slider-tab'
-                  key={index}
-                  layoutId='slider-tab'
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                />
+                <AnimatePresence>
+                  <motion.div
+                    className='slider-tab'
+                    key='slider-tab'
+                    layoutId='slider-tab'
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  />
+                </AnimatePresence>
               ) : null}
               <span>{item.company}</span>
             </motion.button>
           ))}
         </motion.div>
         <motion.div className='experience-wrapper'>
-          <motion.div
-            className='experience-panel'
-            id={`${activeExperience.company}`}
-            variants={wrapperVariants}
-            initial='hidden'
-            animate='show'
-            exit='exit'
-            key={activeExperience.company}>
-            <h3 className='experience-panel-heading'>
-              <span>{activeExperience.title}</span>
-              <motion.span className='text-primary-blue/50 dark:text-main/50'>
-                &nbsp;➤&nbsp;
-              </motion.span>
-              <Link href='https://matic.com'>
-                <a className='company-name'>{activeExperience.company}</a>
-              </Link>
-            </h3>
-            <p className='company-work-time'>{activeExperience.during}</p>
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              className='experience-panel'
+              id={`${activeExperience.company}`}
+              variants={panelVariants}
+              initial='hidden'
+              animate='show'
+              exit='exit'
+              key={activeExperience.company}>
+              <h3 className='experience-panel-heading'>
+                <span>{activeExperience.title}</span>
+                <motion.span className='text-primary-blue/50 dark:text-main/50'>
+                  &nbsp;➤&nbsp;
+                </motion.span>
+                <Link href='https://matic.com'>
+                  <a className='company-name'>{activeExperience.company}</a>
+                </Link>
+              </h3>
+              <p className='company-work-time'>{activeExperience.during}</p>
 
-            <motion.ul>
-              {activeExperience.descriptions.map((description, index) => (
-                <motion.li className='experience-description' key={index}>
-                  {description}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
+              <motion.ul>
+                {activeExperience.descriptions.map((description, index) => (
+                  <motion.li className='experience-description' key={index}>
+                    {description}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
       </div>
     </motion.section>
   );
 };
 
-const wrapperVariants = {
+const panelVariants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    x: 30,
   },
   show: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.5,
       ease: 'easeInOut',
     },
   },
   exit: {
     opacity: 0,
-    y: -20,
+    y: 20,
     transition: {
-      duration: 0.3,
+      duration: 0.5,
       ease: 'easeInOut',
     },
   },

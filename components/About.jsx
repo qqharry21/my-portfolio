@@ -1,6 +1,5 @@
 /** @format */
 
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { about } from '../data';
 import { motion, useAnimation } from 'framer-motion';
@@ -67,14 +66,15 @@ const About = () => {
         </motion.div>
         <motion.div className='about-right'>
           <motion.div
-            className={`about-wrapper group  ${
+            className={`about-wrapper group after:shadow-xl ${
               theme === 'light'
                 ? 'border-primary-blue hover:border-gray-500'
                 : 'border-main hover:border-primary-white'
             }`}
             animate={{ rotate: [2, -2] }}
             transition={{
-              yoyo: Infinity,
+              repeat: Infinity,
+              repeatType: 'reverse',
               ease: 'easeInOut',
             }}>
             <Selfie theme={theme} isMobile={isMobile} />
@@ -92,18 +92,14 @@ const About = () => {
   );
 };
 
-const template = ({ rotateY, rotateX }) => {
-  return `perspective(800px) rotateX(${rotateX}) rotateY(${rotateY})`;
-};
-
 const Selfie = ({ theme, isMobile }) => {
   return (
-    <motion.div className=' dark:group-hover:bg-main group-hover:bg-primary-blue dark:bg-primary-white bg-primary-dark/80 transition-colors duration-200 ease-in-out pointer-events-none'>
-      <motion.svg
+    <motion.div className=' dark:group-hover:bg-main group-hover:bg-primary-blue dark:bg-primary-white bg-primary-dark/80 transition-colors duration-200 ease-in-out pointer-events-none shadow-xl'>
+      <svg
         version='1.0'
         xmlns='http://www.w3.org/2000/svg'
-        width={isMobile ? 256 : 384}
-        height={isMobile ? 256 : 384}
+        width={isMobile ? 192 : 384}
+        height={isMobile ? 192 : 384}
         viewBox='0 0 1028.000000 1028.000000'
         preserveAspectRatio='xMidYMid meet'>
         <g
@@ -835,7 +831,7 @@ m-11 -1087 c0 -5 10 -10 23 -10 65 0 91 -93 41 -144 -51 -50 -111 -25 -121 51
 36 224 50 355 24 225 72 498 114 662 22 84 27 80 -84 53z'
           />
         </g>
-      </motion.svg>
+      </svg>
     </motion.div>
   );
 };
