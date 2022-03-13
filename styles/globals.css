@@ -8,7 +8,9 @@
   box-sizing: border-box;
   /* color: #2d3450; */
 }
-
+img {
+  -webkit-user-drag: none;
+}
 .project-content {
   grid-area: 1 / 1 / -1 / 7;
 }
@@ -26,7 +28,7 @@
   h2,
   h3,
   h4 {
-    @apply leading-7 text-2xl font-bold;
+    @apply leading-7 text-2xl font-bold select-none;
   }
   h1 {
     @apply text-6xl tablet:text-4xl;
@@ -363,7 +365,7 @@
   }
 
   .contact-description {
-    @apply leading-8 text-gray-500 tablet:text-xl mobile:!text-base tablet:text-center;
+    @apply leading-8 text-gray-500 tablet:text-xl mobile:!text-base tablet:text-center select-none;
   }
 
   .contact-image {

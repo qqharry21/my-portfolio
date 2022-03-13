@@ -18,7 +18,7 @@ const Contact = () => {
       rotateY: info.offset.x / 2,
       rotateX: -info.offset.y / 2,
     });
-    // document.querySelector('.experience-panel').classList.add('cursor-grabbing');
+    document.querySelector('.contact-right').classList.add('cursor-grabbing');
   };
 
   const handlePanEnd = () => {
@@ -27,7 +27,7 @@ const Contact = () => {
       rotateX: 0,
     });
 
-    // document.querySelector('.experience-panel').classList.remove('cursor-grabbing');
+    document.querySelector('.contact-right').classList.remove('cursor-grabbing');
   };
   useEffect(() => {
     if (inView) {
@@ -44,7 +44,7 @@ const Contact = () => {
       animation.start({ opacity: 0 });
     }
   }, [inView]);
-  
+
   return (
     <motion.section
       className='section-container px-5 laptop:px-4'
@@ -59,7 +59,7 @@ const Contact = () => {
             alt='photo'
             width={isMobile ? 300 : 300}
             height={isMobile ? 360 : 360}
-            className='contact-image rounded-full'
+            className='contact-image rounded-full select-none'
           />
         </motion.div>
         <motion.div
@@ -88,6 +88,7 @@ const Contact = () => {
     </motion.section>
   );
 };
+
 const template = ({ rotateY, rotateX }) => {
   return `perspective(800px) rotateX(${rotateX}) rotateY(${rotateY})`;
 };
