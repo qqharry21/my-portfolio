@@ -7,6 +7,7 @@ import { BiMenuAltRight } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/animation/framerAnimations';
 import PropTypes from 'prop-types';
+import { Example } from './test/Example';
 
 const navList = [
   {
@@ -37,27 +38,9 @@ const navItem = {
 };
 
 const Navbar = ({ theme, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
-  const navListContainer = {
-    hidden: {
-      top: '-60vh',
-    },
-    show: {
-      top: 0,
-      transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.2,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
   return (
     <nav className='center nav'>
-      <motion.ul
-        className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}
-        // variants={navListContainer}
-        // animate={showMediaNavbar ? 'show' : 'hidden'}
-      >
+      <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
         {navList.map((list, index) => {
           return (
             <NavbarItem key={index} {...list} index={index} toggleMediaNavbar={toggleMediaNavbar} />
@@ -65,6 +48,7 @@ const Navbar = ({ theme, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
         })}
       </motion.ul>
 
+      {/* Theme Btn */}
       <motion.button
         type='button'
         variants={fadeIn}
@@ -78,6 +62,7 @@ const Navbar = ({ theme, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
         )}
       </motion.button>
 
+      {/* Media Navbar Btn */}
       <motion.button
         type='button'
         variants={fadeIn}

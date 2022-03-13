@@ -58,9 +58,15 @@ const Scrollbar = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', scrollSpy);
-    window.addEventListener('click', handleClick);
     return () => {
       window.removeEventListener('scroll', scrollSpy);
+    };
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('click', handleClick);
+
+    return () => {
       window.removeEventListener('click', handleClick);
     };
   }, []);

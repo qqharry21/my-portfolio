@@ -24,7 +24,8 @@ const Layout = ({ children, currentPath }) => {
       <Header />
       <SocialBar />
       <EmailBar />
-      {currentPath === '/' && <Scrollbar />}
+      {/* {currentPath === '/' && <Scrollbar />} */}
+
       <main className={`main`} id='main'>
         {children}
       </main>
