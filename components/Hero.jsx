@@ -47,13 +47,13 @@ const Hero = () => {
           </span>
         </a>
       </div>
-      <motion.div
+      {/* <motion.div
         className='justify-center items-center absolute flex flex-col top-[90%] dark:text-primary-white/70 text-gray-500'
         variants={scrollIconVariants}
         initial='hidden'
         animate={showScrollDownIcon ? 'show' : 'hidden'}>
         <BsChevronDoubleDown size={35} className='mx-auto mb-2 dark:text-main text-primary-blue' />
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };

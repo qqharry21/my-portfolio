@@ -368,6 +368,10 @@ img {
     @apply leading-8 text-gray-500 tablet:text-xl mobile:!text-base tablet:text-center select-none;
   }
 
+  .contact-wrapper {
+    @apply relative mx-auto items-center justify-center max-w-max;
+  }
+
   .contact-image {
     /* @apply relative mx-auto; */
   }

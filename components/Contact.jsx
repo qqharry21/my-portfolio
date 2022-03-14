@@ -54,13 +54,15 @@ const Contact = () => {
       <h2 className='section-heading'>Contact Me</h2>
       <motion.div className='contact-content'>
         <motion.div className='contact-left'>
-          <Image
-            src='/hero.png'
-            alt='photo'
-            width={isMobile ? 300 : 300}
-            height={isMobile ? 360 : 360}
-            className='contact-image rounded-full select-none'
-          />
+          <motion.div className='contact-wrapper'>
+            <Image
+              src='/hero.png'
+              alt='photo'
+              width={isMobile ? 250 : 300}
+              height={isMobile ? 300 : 360}
+              className='contact-image rounded-full select-none'
+            />
+          </motion.div>
         </motion.div>
         <motion.div
           className='contact-right'
