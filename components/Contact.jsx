@@ -58,8 +58,8 @@ const Contact = () => {
             <Image
               src='/hero.png'
               alt='photo'
-              width={isMobile ? 250 : 300}
-              height={isMobile ? 300 : 360}
+              width={isMobile ? 200 : 300}
+              height={isMobile ? 240 : 360}
               className='contact-image rounded-full select-none'
             />
           </motion.div>

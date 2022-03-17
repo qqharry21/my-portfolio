@@ -264,7 +264,7 @@ img {
 
   /** Experience */
   .experience-wrapper {
-    @apply ml-5 w-full relative;
+    @apply ml-5 mobile:ml-0 w-full relative;
   }
 
   .experience-panel {
