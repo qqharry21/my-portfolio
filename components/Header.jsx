@@ -44,14 +44,14 @@ const Header = () => {
     };
   }, [lastYPos, showMediaNavbar]);
 
-  useEffect(() => {
-    const html = document.querySelector('html');
-    if (showMediaNavbar && isTablet) {
-      html.style.overflowY = 'hidden';
-    } else {
-      html.style.overflowY = 'scroll';
-    }
-  }, [showMediaNavbar]);
+  // useEffect(() => {
+  //   const html = document.querySelector('html');
+  //   if (showMediaNavbar && isTablet) {
+  //     html.style.overflowY = 'hidden';
+  //   } else {
+  //     html.style.overflowY = 'scroll';
+  //   }
+  // }, [showMediaNavbar]);
 
   // framer motion config
   const headerContainer = {
@@ -59,7 +59,7 @@ const Header = () => {
     show: {
       y: isVisible ? 0 : '-50vh',
       transition: {
-        ease: 'easeInOut',
+        ease: 'linear',
         duration: 0.3,
         delay: !isVisible && 0.1,
       },
@@ -70,7 +70,7 @@ const Header = () => {
     <motion.header
       className={`header center ${lastYPos > 0 && 'shadow-md'}`}
       variants={headerContainer}
-      initial='hidden'
+      // initial='hidden'
       animate='show'>
       {isTablet ? (
         <h1>

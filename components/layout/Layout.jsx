@@ -19,8 +19,7 @@ const Layout = ({ children, currentPath }) => {
       key='layout'
       variants={page}
       initial='hidden'
-      animate='show'
-      exit='exit'>
+      animate='show'>
       <Header />
       <SocialBar />
       <EmailBar />

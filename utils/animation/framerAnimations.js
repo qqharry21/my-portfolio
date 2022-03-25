@@ -69,7 +69,7 @@ export const page = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      staggerChildren: 0.3,
+      staggerChildren: 0.5,
     },
   },
   exit: {
@@ -77,7 +77,7 @@ export const page = {
     opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: 0.8,
+      duration: 1,
     },
   },
 };

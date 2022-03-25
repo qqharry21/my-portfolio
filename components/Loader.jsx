@@ -56,7 +56,7 @@ const bgVariants = {
     opacity: 1,
     transition: {
       duration: 0.8,
-      delay: 2.5,
+      delay: 1.5,
       ease: 'easeInOut',
     },
   },
@@ -70,7 +70,7 @@ const shadowVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      delay: 2.5,
+      delay: 1.5,
       ease: 'easeInOut',
     },
   },
@@ -103,7 +103,7 @@ const Loader = ({ setLoading }) => {
 
 const Logo = ({ isTablet, theme }) => {
   return (
-    <motion.div variants={item}>
+    <motion.div variants={item} key='logo'>
       <motion.svg
         xmlns='http://www.w3.org/2000/svg'
         width={isTablet ? '350' : '700'}

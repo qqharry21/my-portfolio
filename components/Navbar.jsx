@@ -7,7 +7,6 @@ import { BiMenuAltRight } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/animation/framerAnimations';
 import PropTypes from 'prop-types';
-import { Example } from './test/Example';
 
 const navList = [
   {
@@ -40,7 +39,7 @@ const navItem = {
 const Navbar = ({ theme, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
   return (
     <nav className='center nav'>
-      <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
+      <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`} key='navbar'>
         {navList.map((list, index) => {
           return (
             <NavbarItem key={index} {...list} index={index} toggleMediaNavbar={toggleMediaNavbar} />
