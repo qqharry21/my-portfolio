@@ -3,12 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { about } from '../data';
-import { BsChevronDoubleDown } from 'react-icons/bs';
+// import { BsChevronDoubleDown } from 'react-icons/bs';
 import { motion, useAnimation } from 'framer-motion';
 
 const Hero = () => {
   const { ref, inView } = useInView();
   const [showScrollDownIcon, setShowScrollDownIcon] = useState(true);
+  const animation = useAnimation();
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;
@@ -23,9 +24,26 @@ const Hero = () => {
     };
   }, [showScrollDownIcon]);
 
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        transition: {
+          type: 'spring',
+          duration: 2,
+        },
+      });
+    }
+    if (!inView) {
+      animation.start({
+        opacity: 0,
+      });
+    }
+  }, [inView]);
+
   return (
-    <section className='hero-container' id='home' ref={ref}>
-      <div>
+    <motion.section className='hero-container' id='home' key='hero' animate={animation}>
+      <div ref={ref}>
         <h4 className='hero-head'>Hi, my name is</h4>
       </div>
       <div>
@@ -54,7 +72,7 @@ const Hero = () => {
         animate={showScrollDownIcon ? 'show' : 'hidden'}>
         <BsChevronDoubleDown size={35} className='mx-auto mb-2 dark:text-main text-primary-blue' />
       </motion.div> */}
-    </section>
+    </motion.section>
   );
 };
 
