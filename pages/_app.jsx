@@ -1,47 +1,49 @@
 /** @format */
 import React, { useEffect, useState } from 'react';
-import Layout from '../components/layout/Layout';
 import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { EmailBar, Footer, Header, Meta, ScrollToTop, SocialBar } from '../components';
 
-import { Meta, Loader } from '../components';
-
-function MyApp({ Component, pageProps, router }) {
-  const routers = useRouter();
+const MyApp = ({ Component, pageProps, router }) => {
+  const { pathname } = useRouter();
   const [loading, setLoading] = useState(true);
-  const [currentPath, setCurrentPath] = useState(routers.pathname);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleRouteChange = url => {
       window.scrollTo(0, 0);
-      setCurrentPath(url);
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router.events]);
+  }, [pathname, router.events]);
 
+  if (!mounted) return null;
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem='true'>
-      <AnimateSharedLayout type='crossfade'>
-        <AnimatePresence onExitComplete={() => window.scrollTo(0, 0)}>
-          {loading ? (
+      <Meta />
+      <Header />
+      <SocialBar />
+      <EmailBar />
+      <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
+        <Component {...pageProps} key={router.route} />
+        {/* {loading &&
             <motion.div key='loader' id='loader'>
               <Meta />
               <Loader setLoading={setLoading} />
             </motion.div>
-          ) : (
-            <Layout currentPath={currentPath}>
-              <Component {...pageProps} key={router.route} />
-            </Layout>
-          )}
-        </AnimatePresence>
-      </AnimateSharedLayout>
+          */}
+      </AnimatePresence>
+      <ScrollToTop />
+      <Footer />
     </ThemeProvider>
   );
-}
+};
 
 export default MyApp;

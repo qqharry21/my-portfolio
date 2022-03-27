@@ -73,13 +73,13 @@ const Header = () => {
       initial='hidden'
       animate='show'>
       {isTablet ? (
-        <h1>
-          <Link href='/' className='link' shallow>
+        <motion.h1>
+          <Link href='/' className='link' scroll={false}>
             Hao
           </Link>
-        </h1>
+        </motion.h1>
       ) : (
-        <Link className='mt-4 tablet:mt-12' href='/' shallow passHref>
+        <Link className='mt-4 laptop:mt-12' href='/' passHref scroll={false}>
           <a>
             {theme === 'light' ? (
               <Image src='/light_logo.svg' alt='Logo' width={100} height={100} />

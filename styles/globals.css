@@ -89,7 +89,7 @@ img {
 
 @layer components {
   .header {
-    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 mobile:!h-16 tablet:px-12 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
+    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 mobile:!h-20 tablet:px-12 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
   }
 
   .selected {

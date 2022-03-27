@@ -1,38 +1,25 @@
 /** @format */
 
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
-import { Header, EmailBar, Footer, ScrollToTop, SocialBar, Scrollbar } from '..';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 import { page } from '../../utils/animation/framerAnimations';
-const Layout = ({ children, currentPath }) => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
-  if (!mounted) return null;
-
+const Layout = ({ children, title, description }) => {
   return (
-    <motion.div
-      className='app'
-      id='top'
-      key='layout'
-      variants={page}
-      initial='hidden'
-      animate='show'
-      exit='exit'>
-      <Header />
-      <SocialBar />
-      <EmailBar />
-      {/* {currentPath === '/' && <Scrollbar />} */}
-
-      <main className={`main`} id='main'>
+    <div className='app' id='top' key='layout'>
+      <NextSeo title={title} description={description} openGraph={{ title, description }} />
+      <motion.main
+        className={`main`}
+        id='main'
+        variants={page}
+        transition={{ type: 'linear' }}
+        initial='hidden'
+        animate='show'
+        exit='exit'>
         {children}
-      </main>
-
-      <ScrollToTop />
-      <Footer />
-    </motion.div>
+      </motion.main>
+    </div>
   );
 };
 
