@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { experiences } from '../data';
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
@@ -52,30 +52,32 @@ const Experience = () => {
       animate={animation}>
       <h2 className='section-heading'>My Experience</h2>
       <div className='experience-content'>
-        <motion.div className='tab-list'>
-          {experiences.map((item, index) => (
-            <motion.button
-              className='experience-tab'
-              id={`tab-${index}`}
-              key={index}
-              tabIndex={index}
-              onClick={() => {
-                toggleTab(index);
-              }}>
-              {index === activeTab ? (
-                <AnimatePresence>
-                  <motion.div
-                    className='slider-tab'
-                    key='slider-tab'
-                    layoutId='slider-tab'
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                  />
-                </AnimatePresence>
-              ) : null}
-              <span>{item.company}</span>
-            </motion.button>
-          ))}
-        </motion.div>
+        <AnimateSharedLayout>
+          <motion.div className='tab-list'>
+            {experiences.map((item, index) => (
+              <motion.button
+                className='experience-tab'
+                id={`tab-${index}`}
+                key={index}
+                tabIndex={index}
+                onClick={() => {
+                  toggleTab(index);
+                }}>
+                {index === activeTab ? (
+                  <AnimatePresence>
+                    <motion.div
+                      className='slider-tab'
+                      key='slider-tab'
+                      layoutId='slider-tab'
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                    />
+                  </AnimatePresence>
+                ) : null}
+                <span>{item.company}</span>
+              </motion.button>
+            ))}
+          </motion.div>
+        </AnimateSharedLayout>
         <motion.div className='experience-wrapper'>
           <AnimatePresence exitBeforeEnter>
             <motion.div

@@ -1,6 +1,5 @@
 /** @format */
 
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { about } from '../data';
 import { motion, useAnimation } from 'framer-motion';
@@ -14,24 +13,6 @@ const About = () => {
   const { theme } = useTheme();
   const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
   const animation = useAnimation();
-  const controls = useAnimation();
-
-  const handlePan = (e, info) => {
-    controls.set({
-      rotateY: info.offset.x / 2,
-      rotateX: -info.offset.y / 2,
-    });
-    // document.querySelector('.experience-panel').classList.add('cursor-grabbing');
-  };
-
-  const handlePanEnd = () => {
-    controls.start({
-      rotateY: 0,
-      rotateX: 0,
-    });
-
-    // document.querySelector('.experience-panel').classList.remove('cursor-grabbing');
-  };
 
   useEffect(() => {
     if (inView) {
@@ -51,7 +32,7 @@ const About = () => {
   }, [inView]);
 
   return (
-    <motion.section className='section-container px-20 laptop:px-4 ' id='about' animate={animation}>
+    <motion.section className='section-container px-12 laptop:px-4 ' id='about' animate={animation}>
       <motion.h2 className='section-heading'>About me</motion.h2>
       <div className='about-content' ref={ref}>
         <motion.div className='about-left'>
@@ -99,8 +80,8 @@ const Selfie = ({ theme, isMobile }) => {
       <svg
         version='1.0'
         xmlns='http://www.w3.org/2000/svg'
-        width={isMobile ? 200 : 384}
-        height={isMobile ? 200 : 384}
+        width={isMobile ? 200 : 360}
+        height={isMobile ? 200 : 360}
         viewBox='0 0 1028.000000 1028.000000'
         preserveAspectRatio='xMidYMid meet'>
         <g

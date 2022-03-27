@@ -1,12 +1,14 @@
 /** @format */
 
+import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
-import PropTypes from 'prop-types';
+import { url } from '../utils/url';
 
-const Meta = ({ title, keywords, description, image }) => {
+const Meta = ({ title, keywords, description }) => {
   return (
-    <Head>
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <>
+      <Head>
+        {/* <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta charSet='utf-8' />
       <meta name='keywords' content={keywords} />
       <meta name='description' content={description} />
@@ -22,23 +24,31 @@ const Meta = ({ title, keywords, description, image }) => {
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='fb:app_id' content='299623688779110' />
 
-      <title>{title.includes('Chen') ? title : title.concat(' | Harry Chen')}</title>
-
-      <link rel='icon' href='/logo.png' />
-    </Head>
+      <title>{title.includes('Chen') ? title : title.concat(' | Harry Chen')}</title> */}
+        <meta name='keywords' content={keywords} />
+        <link rel='icon' href='/logo.png' />
+      </Head>
+      <DefaultSeo
+        defaultTitle={title}
+        titleTemplate='%s | Harry Chen'
+        openGraph={{
+          type: 'website',
+          locale: 'zh_TW',
+          url,
+          description: description,
+          site_name: title,
+          images: [],
+        }}
+        canonical={url}
+      />
+    </>
   );
 };
 
 Meta.defaultProps = {
-  title: 'Harry Chen - FullStack Developer',
+  title: 'Harry Chen | FullStack Developer',
   keywords: 'web development, programming, web design, react js, tailwindcss, next js',
-  description: 'Software Engineer. Lover of web and opensource.',
-};
-
-Meta.propTypes = {
-  title: PropTypes.string,
-  keywords: PropTypes.string,
-  description: PropTypes.string,
+  description: "Harry Chen's portfolio, developer.",
 };
 
 export default Meta;

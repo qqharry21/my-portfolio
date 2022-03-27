@@ -61,23 +61,47 @@ export const container = {
   },
 };
 
-// Page transitions
 export const page = {
-  hidden: { y: -180, opacity: 0 },
-  show: {
+  hidden: {
+    opacity: 0,
+    x: -200,
     y: 0,
+  },
+  show: {
     opacity: 1,
+    x: 0,
+    y: 0,
     transition: {
       ease: 'easeInOut',
-      staggerChildren: 0.3,
     },
   },
   exit: {
-    y: 180,
     opacity: 0,
+    x: 0,
+    y: -100,
     transition: {
       ease: 'easeInOut',
-      duration: 0.8,
     },
   },
 };
+
+// Page transitions
+// export const page = {
+//   hidden: { y: -180, opacity: 0 },
+//   show: {
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       ease: 'easeInOut',
+//       staggerChildren: 0.3,
+//     },
+//   },
+//   exit: {
+//     y: 180,
+//     opacity: 0,
+//     transition: {
+//       ease: 'easeInOut',
+//       duration: 0.8,
+//     },
+//   },
+// };
