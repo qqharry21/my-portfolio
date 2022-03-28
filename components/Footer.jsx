@@ -19,10 +19,10 @@ const Footer = () => {
           })}
         </ul>
       </div>
-      <Link href='#' target='_blank' rel='noopener noreferrer'>
-        <a href='#' className='p-1 tracking-widest'>
+      <Link href='/github'>
+        <a className='p-1 tracking-widest' target='_blank' rel='noopener noreferrer'>
           <div>Created by Harry Chen</div>
-          <div className='mt-2'> &copy; 2022</div>
+          <div className='mt-2'> &copy; {new Date().getFullYear()}</div>
         </a>
       </Link>
     </footer>

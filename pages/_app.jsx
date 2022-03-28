@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
-import { AnimatePresence } from 'framer-motion';
-import { EmailBar, Footer, Header, Meta, ScrollToTop, SocialBar } from '../components';
+import { AnimatePresence, motion } from 'framer-motion';
+import { EmailBar, Footer, Header, Loader, Meta, ScrollToTop, SocialBar } from '../components';
 
 const MyApp = ({ Component, pageProps, router }) => {
   const { pathname } = useRouter();
@@ -15,33 +15,45 @@ const MyApp = ({ Component, pageProps, router }) => {
   }, []);
 
   useEffect(() => {
-    const handleRouteChange = url => {
+    const html = document.querySelector('html');
+    const handleRouteChange = () => {
+      html.style.scrollBehavior = 'auto';
       window.scrollTo(0, 0);
+      setTimeout(() => {
+        html.style.scrollBehavior = 'smooth';
+      }, 1000);
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [pathname, router.events]);
+  }, [router.events]);
 
   if (!mounted) return null;
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem='true'>
       <Meta />
-      <Header />
-      <SocialBar />
-      <EmailBar />
       <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
-        <Component {...pageProps} key={router.route} />
-        {/* {loading &&
-            <motion.div key='loader' id='loader'>
-              <Meta />
-              <Loader setLoading={setLoading} />
-            </motion.div>
-          */}
+        {loading ? (
+          <motion.div key='loader' className='loader'>
+            <Loader setLoading={setLoading} />
+          </motion.div>
+        ) : (
+          <>
+            <Header path={pathname} />
+            <SocialBar />
+            <EmailBar />
+            <AnimatePresence
+              exitBeforeEnter
+              onExitComplete={() => window.scrollTo(0, 0)}
+              initial={false}>
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+            <Footer />
+          </>
+        )}
       </AnimatePresence>
       <ScrollToTop />
-      <Footer />
     </ThemeProvider>
   );
 };

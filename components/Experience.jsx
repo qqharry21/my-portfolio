@@ -90,9 +90,7 @@ const Experience = () => {
               key={activeExperience.company}>
               <h3 className='experience-panel-heading'>
                 <span>{activeExperience.title}</span>
-                <motion.span className='text-primary-blue/50 dark:text-main/50'>
-                  &nbsp;➤&nbsp;
-                </motion.span>
+                <motion.span className='text-primary-blue/50 dark:text-main/50 mx-2'>➤</motion.span>
                 <Link href='https://matic.com'>
                   <a className='company-name'>{activeExperience.company}</a>
                 </Link>

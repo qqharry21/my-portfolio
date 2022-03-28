@@ -6,7 +6,8 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useMediaQuery } from 'react-responsive';
 import { useTheme } from 'next-themes';
-
+import { FaHandPointLeft } from 'react-icons/fa';
+import Link from 'next/link';
 const About = () => {
   const { ref, inView } = useInView();
 
@@ -32,11 +33,20 @@ const About = () => {
   }, [inView]);
 
   return (
-    <motion.section className='section-container px-12 laptop:px-4 ' id='about' animate={animation}>
+    <motion.section
+      className='section-container px-12 laptop:px-4 '
+      id='about'
+      key='about'
+      animate={animation}>
       <motion.h2 className='section-heading'>About me</motion.h2>
       <div className='about-content' ref={ref}>
         <motion.div className='about-left'>
-          <p className='mb-4'>{about.description2}</p>
+          <p className='mb-4'>
+            {about.description2}...
+            <Link href='/about' scroll={false}>
+              <a className='text-primary-blue dark:text-main link'>More about me</a>
+            </Link>
+          </p>
 
           <ul className='skill-list'>
             {about.skills.map((skill, index) => (
@@ -59,7 +69,11 @@ const About = () => {
               repeatType: 'reverse',
               ease: 'easeInOut',
             }}>
-            <Selfie theme={theme} isMobile={isMobile} />
+            <Link href='/about' scroll={false}>
+              <a>
+                <Selfie theme={theme} isMobile={isMobile} />
+              </a>
+            </Link>
             {/* <Image
               src='/black.svg'
               width={isMobile ? 210 : 384}
