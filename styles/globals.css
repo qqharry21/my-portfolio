@@ -353,7 +353,7 @@ img {
   }
 
   .contact-left {
-    @apply min-w-max justify-center items-center mx-auto max-w-xs laptop:my-10;
+    @apply min-w-max justify-center items-center max-w-max laptop:my-10;
   }
 
   .contact-right {

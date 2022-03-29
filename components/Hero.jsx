@@ -1,30 +1,14 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { about } from '../data';
 import { motion, useAnimation } from 'framer-motion';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const Hero = () => {
   const { ref, inView } = useInView();
-  const router = useRouter();
-  const [showScrollDownIcon, setShowScrollDownIcon] = useState(true);
   const animation = useAnimation();
-  useEffect(() => {
-    const handleScroll = () => {
-      const yPos = window.scrollY;
-      const isScrollingUp = yPos === 0;
-      setShowScrollDownIcon(isScrollingUp);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [showScrollDownIcon]);
 
   useEffect(() => {
     if (inView) {

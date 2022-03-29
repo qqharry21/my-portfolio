@@ -54,6 +54,14 @@ const Contact = () => {
       <h2 className='section-heading'>Contact Me</h2>
       <motion.div className='contact-content'>
         <motion.div className='contact-left'>
+          {/* <motion.div className='bg-gray-500 m-0 block justify-center p-5'>
+            <div className='grid grid-cols-3 max-w-full p-2 justify-between'>
+              <div className=''>label</div>
+              <input name='title' className='bg-white w-full' />
+            </div>
+
+            <div className=''>contact</div>
+          </motion.div> */}
           <motion.div className='contact-wrapper'>
             <Image
               src='/hero.png'
@@ -64,28 +72,30 @@ const Contact = () => {
             />
           </motion.div>
         </motion.div>
-        <motion.div
-          className='contact-right'
-          onPan={handlePan}
-          onPanEnd={handlePanEnd}
-          transformTemplate={template}
-          animate={controls}>
-          <motion.div className='contact-title'>Get In Touch !!</motion.div>
-          <div className='contact-description'>
-            Recently, I am looking for an opportunity to join a Frontend team where can use my
-            abilities to help the team. My inbox is always open, so feel free to contact me and I
-            will get back to you as soon as possible.
-          </div>
-          <div className='contact-link'>
-            <Link href='mailto:qqharry21@gmail.com'>
-              <a className='flex w-full mt-4 mx-auto'>
-                <button className='btn--outline btn rounded-md capitalize w-full text-lg'>
-                  Touch me
-                </button>
-              </a>
-            </Link>
-          </div>
-        </motion.div>
+        {!isMobile && (
+          <motion.div
+            className='contact-right'
+            onPan={handlePan}
+            onPanEnd={handlePanEnd}
+            transformTemplate={template}
+            animate={controls}>
+            <motion.div className='contact-title'>Say Hello To Me !!</motion.div>
+            <div className='contact-description'>
+              Recently, I am looking for an opportunity to join a Frontend team where can use my
+              abilities to help the team. My inbox is always open, so feel free to contact me and I
+              will get back to you as soon as possible.
+            </div>
+            <div className='contact-link'>
+              <Link href='mailto:qqharry21@gmail.com'>
+                <a className='flex w-full mt-4 mx-auto'>
+                  <button className='btn--outline btn rounded-md capitalize w-full text-lg'>
+                    Touch me
+                  </button>
+                </a>
+              </Link>
+            </div>
+          </motion.div>
+        )}
       </motion.div>
     </motion.section>
   );

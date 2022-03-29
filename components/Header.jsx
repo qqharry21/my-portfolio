@@ -42,7 +42,7 @@ const Header = ({ path }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastYPos, showMediaNavbar]);
+  }, [lastYPos]);
 
   useEffect(() => {
     const html = document.querySelector('html');
