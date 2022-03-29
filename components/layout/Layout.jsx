@@ -7,7 +7,7 @@ import { page } from '../../utils/animation/framerAnimations';
 
 const Layout = ({ children, title, description }) => {
   return (
-    <div className='app' id='top' key='layout'>
+    <>
       <NextSeo title={title} description={description} openGraph={{ title, description }} />
       <motion.main
         className={`main`}
@@ -19,7 +19,7 @@ const Layout = ({ children, title, description }) => {
         exit='exit'>
         {children}
       </motion.main>
-    </div>
+    </>
   );
 };
 

@@ -81,7 +81,7 @@ const Project = () => {
                   </div>
                 </div>
               </div>
-              <motion.div className='project-image' whileTap={{ scale: 1.1 }}>
+              <motion.div className='project-image' whileHover={{ scale: 1.1 }}>
                 <Image
                   src={project.image}
                   alt='photo'
@@ -95,7 +95,7 @@ const Project = () => {
           );
         })}
       </ul>
-      <Link href='/projects'>
+      <Link href='/project'>
         <a className='flex mx-auto'>
           <button className='btn btn--outline px-5 capitalize rounded-md flex '>
             See More

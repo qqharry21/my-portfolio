@@ -6,27 +6,7 @@ import { IoClose } from 'react-icons/io5';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/animation/framerAnimations';
-import PropTypes from 'prop-types';
-import { Example } from './test/Example';
-
-const navList = [
-  {
-    title: 'About',
-    href: '#about',
-  },
-  {
-    title: 'Experience',
-    href: '#experience',
-  },
-  {
-    title: 'Project',
-    href: '#project',
-  },
-  {
-    title: 'Contact',
-    href: '#contact',
-  },
-];
+import Link from 'next/link';
 
 const navItem = {
   hidden: { opacity: 0, translateX: 100, translateY: -100 },
@@ -37,7 +17,25 @@ const navItem = {
   },
 };
 
-const Navbar = ({ theme, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
+const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
+  const navList = [
+    {
+      title: 'About',
+      href: isHomePage ? '#about' : '/about',
+    },
+    {
+      title: 'Experience',
+      href: isHomePage ? '#experience' : '/experience',
+    },
+    {
+      title: 'Project',
+      href: isHomePage ? '#project' : '/project',
+    },
+    {
+      title: 'Contact',
+      href: isHomePage ? '#contact' : '/contact',
+    },
+  ];
   return (
     <nav className='center nav'>
       <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
@@ -86,16 +84,13 @@ const NavbarItem = ({ toggleMediaNavbar, title, href, index }) => {
       key={title}
       variants={navItem}
       transition={{ delay: 0.1 * index, ease: 'easeIn' }}>
-      <a href={href} onClick={toggleMediaNavbar} className='link link--nav'>
-        {title}
-      </a>
+      <Link href={href} shallow scroll={false}>
+        <a onClick={toggleMediaNavbar} className='link link--nav'>
+          {title}
+        </a>
+      </Link>
     </motion.li>
   );
-};
-
-navList.propsTypes = {
-  title: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
 };
 
 export default Navbar;

@@ -45,13 +45,13 @@ const Hero = () => {
 
   return (
     <motion.section className='hero-container' id='home' key='hero' animate={animation}>
-      <div ref={ref}>
+      <div>
         <h4 className='hero-head'>Hi, my name is</h4>
       </div>
       <div>
         <h1 className='hero-title'>Harry Chen</h1>
       </div>
-      <div>
+      <div ref={ref}>
         <h2 className='hero-subtitle'>
           Or you can just call me&nbsp;
           <a className='dark:text-main/90 tracking-normal text-primary-blue/90'>Hao</a>.
@@ -61,8 +61,8 @@ const Hero = () => {
         <h4 className='hero-description'>{about.description1}</h4>
       </div>
       <div>
-        <Link scroll={false} href='/test'>
-          <a>
+        <Link scroll={false} href='/resume.pdf'>
+          <a rel='noopener noreferrer' target='_blank'>
             <span
               typeof='button'
               className='btn btn--outline hero-resume px-10 rounded-sm'

@@ -86,17 +86,15 @@ const Loader = ({ setLoading }) => {
 
   if (!mounted) return null;
   return (
-    <motion.div className='loader'>
-      <motion.div
-        variants={container}
-        onAnimationComplete={() => {
-          setLoading(false);
-        }}
-        initial='hidden'
-        animate='show'
-        exit='exit'>
-        <Logo isTablet={isTablet} theme={theme} />
-      </motion.div>
+    <motion.div
+      variants={container}
+      onAnimationComplete={() => {
+        setLoading(false);
+      }}
+      initial='hidden'
+      animate='show'
+      exit='exit'>
+      <Logo isTablet={isTablet} theme={theme} />
     </motion.div>
   );
 };
