@@ -28,9 +28,7 @@ const EmailBar = () => {
       animate='show'>
       <div className='right-list '>
         <Link href={`mailto: ${about.email}`}>
-          <a className='right-link' style={{ writingMode: 'vertical-rl' }}>
-            {about.email}
-          </a>
+          <a className='right-link vertical-rl'>{about.email}</a>
         </Link>
       </div>
     </motion.div>

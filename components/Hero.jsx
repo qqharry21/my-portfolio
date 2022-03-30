@@ -47,11 +47,7 @@ const Hero = () => {
       <div>
         <Link scroll={false} href='/resume.pdf'>
           <a rel='noopener noreferrer' target='_blank'>
-            <span
-              typeof='button'
-              className='btn btn--outline hero-resume px-10 rounded-sm'
-              // onClick={() => router.push('/test')}
-            >
+            <span typeof='button' className='btn btn--outline hero-resume px-10 rounded-sm'>
               View my resume
             </span>
           </a>

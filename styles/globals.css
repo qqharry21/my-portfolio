@@ -83,7 +83,7 @@ img {
   }
 
   .btn--icon {
-    @apply p-0 hover:text-primary-blue dark:hover:text-main active:translate-y-[-5px];
+    @apply p-0 hover:text-primary-blue dark:hover:text-main active:translate-y-[-5px] cursor-pointer transition-all duration-200 ease-in-out;
   }
 }
 
@@ -349,11 +349,12 @@ img {
 
   /**  */
   .contact-content {
-    @apply grid grid-cols-2 gap-10 laptop:block;
+    @apply text-xl grid gap-4 mx-16 laptop:mx-10 mobile:!mx-0 justify-center;
   }
+  /* @apply grid grid-cols-2 gap-10 laptop:block; */
 
   .contact-left {
-    @apply min-w-max justify-center items-center max-w-max laptop:my-10;
+    /* @apply min-w-max justify-center items-center max-w-max laptop:my-10; */
   }
 
   .contact-right {
@@ -361,11 +362,11 @@ img {
   }
 
   .contact-title {
-    @apply font-semibold text-primary-dark/80 dark:text-primary-white/80 text-5xl mb-5 tablet:text-4xl mobile:!text-2xl tablet:text-center;
+    @apply font-semibold text-primary-dark/80 dark:text-primary-white/80 text-5xl mb-3 tablet:text-4xl mobile:!text-3xl tablet:text-center;
   }
 
   .contact-description {
-    @apply leading-8 text-gray-500 tablet:text-xl mobile:!text-base tablet:text-center select-none;
+    @apply leading-8 text-gray-500 tablet:text-xl mobile:!text-lg tablet:text-center select-none;
   }
 
   .contact-wrapper {
@@ -374,6 +375,19 @@ img {
 
   .contact-image {
     /* @apply relative mx-auto; */
+  }
+
+  .banner-row {
+    @apply overflow-hidden flex items-center;
+  }
+
+  .animate-letter {
+    @apply left-0;
+  }
+
+  .animate-title,
+  .animate-letter {
+    @apply text-9xl font-extrabold relative tracking-tight inline-block whitespace-nowrap laptop:text-6xl mobile:!text-4xl uppercase;
   }
 
   /* group-odd:border-primary-blue

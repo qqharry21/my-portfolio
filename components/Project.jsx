@@ -35,7 +35,7 @@ const Project = () => {
       ref={ref}
       animate={animation}
       id='project'>
-      <h2 className='section-heading'>Some Projects</h2>
+      <h2 className='section-heading'>Projects I&rsquo;ve Built</h2>
       <ul className='project-list '>
         {projects.map((project, index) => {
           const github_link = project.github === '' ? '/' : project.github;
@@ -101,7 +101,7 @@ const Project = () => {
             See More
             <motion.div
               className='flex items-center justify-center m-auto'
-              variants={seeMoreBtnVariants}
+              variants={btnIconVariants}
               animate='animate'>
               <BiArrowToRight className='ml-2' size={20} />
             </motion.div>
@@ -112,7 +112,7 @@ const Project = () => {
   );
 };
 
-const seeMoreBtnVariants = {
+const btnIconVariants = {
   animate: {
     x: [3, -3],
     transition: {

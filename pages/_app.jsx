@@ -1,6 +1,7 @@
 /** @format */
 import React, { useEffect, useState } from 'react';
 import '../styles/globals.css';
+import 'animate.css';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,14 +10,10 @@ import { EmailBar, Footer, Header, Loader, Meta, ScrollToTop, SocialBar } from '
 const MyApp = ({ Component, pageProps, router }) => {
   const { pathname } = useRouter();
   const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
-    const html = document.querySelector('html');
     const handleRouteChange = () => {
+      const html = document.querySelector('html');
       html.style.scrollBehavior = 'auto';
       window.scrollTo(0, 0);
       setTimeout(() => {
@@ -29,7 +26,6 @@ const MyApp = ({ Component, pageProps, router }) => {
     };
   }, [router.events]);
 
-  if (!mounted) return null;
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem='true'>
       <Meta />
@@ -43,10 +39,7 @@ const MyApp = ({ Component, pageProps, router }) => {
             <Header path={pathname} />
             <SocialBar />
             <EmailBar />
-            <AnimatePresence
-              exitBeforeEnter
-              onExitComplete={() => window.scrollTo(0, 0)}
-              initial={false}>
+            <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
               <Component {...pageProps} key={router.route} />
             </AnimatePresence>
             <Footer />

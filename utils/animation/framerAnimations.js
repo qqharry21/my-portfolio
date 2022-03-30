@@ -61,6 +61,40 @@ export const container = {
   },
 };
 
+export const banner = {
+  animate: {
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const letterAnimate = {
+  initial: {
+    y: 400,
+  },
+  animate: {
+    y: 0,
+    transition: {
+      ease: easing,
+      duration: 1,
+    },
+  },
+};
+
+export const btnIconVariants = {
+  animate: {
+    rotate: [15, -15],
+    transition: {
+      repeat: Infinity,
+      duration: 1,
+      ease: 'linear',
+      repeatType: 'reverse',
+    },
+  },
+};
+
 export const page = {
   hidden: {
     opacity: 0,
@@ -72,7 +106,9 @@ export const page = {
     x: 0,
     y: 0,
     transition: {
-      ease: 'easeInOut',
+      // ease: 'easeInOut',
+      bounce: 0.25,
+      type: 'spring',
     },
   },
   exit: {

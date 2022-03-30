@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.2",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",
