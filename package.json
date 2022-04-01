@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.5.0",
+    "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.2",
     "framer-motion": "^6.2.8",
+    "loaders.css": "^0.1.2",
     "next": "12.1.0",
     "next-seo": "^5.2.0",
     "next-themes": "^0.1.1",

@@ -1,30 +1,14 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { about } from '../data';
 import { motion, useAnimation } from 'framer-motion';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const Hero = () => {
   const { ref, inView } = useInView();
-  const router = useRouter();
-  const [showScrollDownIcon, setShowScrollDownIcon] = useState(true);
   const animation = useAnimation();
-  useEffect(() => {
-    const handleScroll = () => {
-      const yPos = window.scrollY;
-      const isScrollingUp = yPos === 0;
-      setShowScrollDownIcon(isScrollingUp);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [showScrollDownIcon]);
 
   useEffect(() => {
     if (inView) {
@@ -63,11 +47,7 @@ const Hero = () => {
       <div>
         <Link scroll={false} href='/resume.pdf'>
           <a rel='noopener noreferrer' target='_blank'>
-            <span
-              typeof='button'
-              className='btn btn--outline hero-resume px-10 rounded-sm'
-              // onClick={() => router.push('/test')}
-            >
+            <span typeof='button' className='btn btn--outline hero-resume px-10 rounded-sm'>
               View my resume
             </span>
           </a>

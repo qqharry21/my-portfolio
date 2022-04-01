@@ -1,13 +1,14 @@
 /** @format */
 
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 module.exports = {
   mode: 'jit',
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     screens: {
-      mobile: { max: '550px' },
+      mobile: { max: '425px' },
       tablet: { max: '768px' },
       laptop: { max: '1024px' },
       desktop: { max: '1280px' },
@@ -131,5 +132,20 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities, addComponents, e, prefix, config }) {
+      const newUtilities = {
+        '.horizontal-tb': {
+          writingMode: 'horizontal-tb',
+        },
+        '.vertical-rl': {
+          writingMode: 'vertical-rl',
+        },
+        '.vertical-lr': {
+          writingMode: 'vertical-lr',
+        },
+      };
+      addUtilities(newUtilities);
+    }),
+  ],
 };

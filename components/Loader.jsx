@@ -4,15 +4,17 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useMediaQuery } from 'react-responsive';
+
 const container = {
   show: {
     transition: {
-      staggerChildren: 0.35,
+      delayChildren: 0.3,
+      staggerChildren: 0.1,
     },
   },
 };
 
-const item = {
+const svgVariants = {
   hidden: { opacity: 0, y: 50 },
   show: {
     opacity: 1,
@@ -101,7 +103,7 @@ const Loader = ({ setLoading }) => {
 
 const Logo = ({ isTablet, theme }) => {
   return (
-    <motion.div variants={item}>
+    <motion.div variants={svgVariants}>
       <motion.svg
         xmlns='http://www.w3.org/2000/svg'
         width={isTablet ? '350' : '700'}
