@@ -8,7 +8,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     screens: {
-      mobile: { max: '550px' },
+      mobile: { max: '425px' },
       tablet: { max: '768px' },
       laptop: { max: '1024px' },
       desktop: { max: '1280px' },

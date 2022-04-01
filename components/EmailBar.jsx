@@ -27,7 +27,7 @@ const EmailBar = () => {
       initial='hidden'
       animate='show'>
       <div className='right-list '>
-        <Link href={`mailto: ${about.email}`}>
+        <Link href={`mailto:${about.email}?subject=Hi, Harry`}>
           <a className='right-link vertical-rl'>{about.email}</a>
         </Link>
       </div>

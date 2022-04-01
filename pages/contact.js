@@ -1,28 +1,153 @@
 /** @format */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { AnimatePresence, AnimateSharedLayout, motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import Layout from '../components/layout/Layout';
+import { AnimatedLetters } from '../components/animate';
+import emailjs from '@emailjs/browser';
 import { MdOutlineLocalPhone, MdMailOutline } from 'react-icons/md';
 import { BiMailSend } from 'react-icons/bi';
-import { AnimatedLetters } from '../components/animate';
-import { banner } from '../utils/animation/framerAnimations';
+import { RiCheckFill, RiLoader2Fill } from 'react-icons/ri';
+import { spinTransition } from '../utils/animation/framerAnimations';
+
+const formInputs = [
+  {
+    label: 'Name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Your Name',
+  },
+  {
+    label: 'Email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'Your Email',
+  },
+  {
+    label: 'Message',
+    name: 'message',
+    type: 'text',
+    field: (
+      <textarea
+        id='message'
+        type='text'
+        name='message'
+        placeholder='Ask me everything...'
+        className='outline-none border-0 bg-transparent border-b-2 dark:border-gray-500 resize-none mobile:text-sm'
+      />
+    ),
+  },
+];
+
+const InputField = props => {
+  const { label, type, name, field, placeholder } = props;
+  return (
+    <>
+      <label htmlFor={name} className='text-primary-blue dark:text-main mobile:text-sm'>
+        {label}
+      </label>
+      {field ? (
+        field
+      ) : (
+        <input
+          id={name}
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          className='outline-none border-0 bg-transparent border-b-2 dark:border-gray-500 mobile:text-sm'
+        />
+      )}
+    </>
+  );
+};
+
 const ContactPage = () => {
   const formRef = useRef(null);
   const [isHover, setIsHover] = useState(false);
-  const animation = useAnimation();
-  const handleSubmit = e => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const message = e.target.message.value;
-    // nodeMailer api
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSend, setIsSend] = useState(false);
+  const [error, setError] = useState([]);
+  const hoverAnimation = useAnimation();
+  const sendAnimation = useAnimation();
+  const formValidation = data => {
+    const name = data.name.value;
+    const email = data.email.value;
+    const message = data.message.value;
+    const errors = [];
+    if (!name) {
+      errors.push({ id: 'name', error: 'Name is required' });
+    }
+    if (!email) {
+      errors.push({ id: 'email', error: 'Email is required' });
+    } else {
+      const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (!emailRegex.test(email)) {
+        errors.push({ id: 'email', error: 'Email is invalid' });
+      }
+    }
+    if (!message) {
+      errors.push({ id: 'message', error: 'Message is required' });
+    } else {
+      if (message.length > 1000) {
+        errors.push({ id: 'message', error: 'Message is too long' });
+      }
+    }
+    return errors;
   };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    // form validation
+    const errors = formValidation(formRef.current);
+    if (errors.length === 0) {
+      try {
+        setIsLoading(true);
+        await emailjs.sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_API,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          formRef.current,
+          process.env.NEXT_PUBLIC_EMAILJS_USER_API
+        );
+        setIsLoading(false);
+        setIsSend(true);
+        setTimeout(() => {
+          setIsSend(false);
+        }, 2000);
+      } catch (error) {
+        setIsLoading(false);
+        errors.push({ id: 'send', error: 'Something went wrong!!' });
+        setError(errors);
+      }
+    } else {
+      setIsLoading(false);
+      setError(errors);
+    }
+    setTimeout(() => {
+      setError([]);
+    }, 3000);
+  };
+
+  // isSend
+  useEffect(() => {
+    if (isSend) {
+      sendAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: 'easeInOut',
+        },
+      });
+    }
+    if (!isSend) {
+      sendAnimation.start({ opacity: 0 });
+    }
+  }, [isSend]);
+
+  // isHover
   useEffect(() => {
     if (isHover) {
-      animation.start({
+      hoverAnimation.start({
         opacity: 1,
-        translateX: 0,
         transition: {
           duration: 0.5,
           ease: 'easeInOut',
@@ -30,27 +155,22 @@ const ContactPage = () => {
       });
     }
     if (!isHover) {
-      animation.start({ opacity: 0 });
+      hoverAnimation.start({ opacity: 0 });
     }
   }, [isHover]);
+
   return (
     <Layout title='Contact'>
       <motion.section
         className='tablet:flex-col min-h-screen justify-center px-6 flex flex-col max-w-[800px] m-auto'
         id='contact'>
         <div className='mt-20'>
-          <AnimateSharedLayout type='crossfade'>
-            <AnimatePresence>
-              <motion.div className='relative z-[5]' variants={banner}>
-                <div className='banner-row'>
-                  <AnimatedLetters title='Contact' />
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </AnimateSharedLayout>
-          <div className=' bg-gray-300 dark:bg-secondary-gray rounded-tr-[5rem] rounded-bl-[5rem] rounded-tl-2xl rounded-br-2xl overflow-hidden -translate-y-10 laptop:-translate-y-6 mobile:!-translate-y-5 grid grid-cols-2 gap-10 laptop:block py-8 px-16 tablet:px-10 mobile:!px-5 round min-h-[50vh]'>
+          <motion.div className='relative z-[5] banner-row'>
+            <AnimatedLetters title='Contact' />
+          </motion.div>
+          <div className=' bg-gray-300 dark:bg-secondary-gray rounded-tr-[5rem] rounded-bl-[5rem] mobile:rounded-tr-2xl mobile:rounded-bl-2xl rounded-tl-2xl rounded-br-2xl overflow-hidden -translate-y-10 laptop:-translate-y-6 mobile:!-translate-y-5 grid grid-cols-2 gap-10 laptop:block py-8 px-16 tablet:px-10 mobile:!px-5 round min-h-[50vh]'>
             <motion.div className='laptop:my-5 tablet:my-10 justify-center items-center m-auto flex flex-col'>
-              <div className='contact-description text-gray-500 text-2xl mb-6'>
+              <div className='contact-description text-left text-gray-500 text-2xl mb-6'>
                 Feel free to contact me and I will get back to you as soon as possible.
               </div>
               <div className='flex justify-around w-full relative'>
@@ -69,9 +189,12 @@ const ContactPage = () => {
                   onMouseLeave={() => setIsHover(false)}
                 />
                 <motion.div
-                  className='absolute -bottom-[35px] left-0 right-0 flex justify-center text-gray-500'
-                  animate={animation}>
+                  className='absolute -bottom-[35px] mobile:hidden left-0 right-0 flex justify-center text-gray-500'
+                  animate={hoverAnimation}>
                   Click to Copy
+                </motion.div>
+                <motion.div className='absolute -bottom-[35px] mobile:hidden left-0 right-0 flex justify-center text-red-500/70 mt-2 mobile:text-sm'>
+                  {error?.find(error => error.id === 'send')?.error}
                 </motion.div>
               </div>
             </motion.div>
@@ -79,51 +202,42 @@ const ContactPage = () => {
               className='w-full h-full flex flex-col items-center m-auto justify-around'
               ref={formRef}
               onSubmit={handleSubmit}>
-              <div className='flex flex-col w-full laptop:mb-4'>
-                <label htmlFor='name' className='text-primary-blue dark:text-main'>
-                  Name
-                </label>
-                <input
-                  id='name'
-                  type='text'
-                  name='name'
-                  className='outline-none border-0 bg-transparent border-b-2 dark:border-gray-500 '
-                />
-              </div>
-              <div className='flex flex-col w-full laptop:mb-4'>
-                <label htmlFor='email' className='text-primary-blue dark:text-main'>
-                  Email
-                </label>
-                <input
-                  id='email'
-                  type='text'
-                  name='email'
-                  className='outline-none border-0 bg-transparent border-b-2 dark:border-gray-500 '
-                />
-              </div>
-              <div className='flex flex-col w-full laptop:mb-4'>
-                <label htmlFor='message' className='text-primary-blue dark:text-main'>
-                  Message
-                </label>
-                <textarea
-                  id='message'
-                  type='text'
-                  name='message'
-                  className='outline-none border-0 bg-transparent border-b-2 dark:border-gray-500 resize-none'
-                />
-              </div>
+              {formInputs.map((input, index) => (
+                <div className='flex flex-col w-full laptop:mb-4' key={index}>
+                  <InputField {...input} />
+                  <motion.div id='error' className='text-red-500/70 mobile:text-sm'>
+                    {error.find(error => error.id === input.name)?.error}
+                  </motion.div>
+                </div>
+              ))}
+
               <motion.button
                 className='link rounded-md max-w-fit capitalize text-lg flex w-full justify-center mt-4 mx-auto laptop:mt-5'
                 type='submit'
                 initial='rest'
                 whileHover='hover'
                 animate='rest'>
-                Send message
+                {isLoading && (
+                  <motion.div
+                    className='absolute flex items-center justify-center my-auto -left-8 top-0 bottom-0 '
+                    animate={{ rotate: 90 }}
+                    transition={spinTransition}>
+                    <RiLoader2Fill size={20} />
+                  </motion.div>
+                )}
                 <motion.div
-                  className='flex items-center justify-center my-auto '
-                  variants={slashMotion}>
-                  <BiMailSend className='ml-2' size={25} />
+                  className='absolute flex items-center justify-center my-auto -left-8 top-0 bottom-0 '
+                  animate={sendAnimation}>
+                  <RiCheckFill size={20} />
                 </motion.div>
+                Send
+                {!isLoading && !isSend && (
+                  <motion.div
+                    className='absolute -right-8 top-0 bottom-0 flex items-center justify-center my-auto '
+                    variants={mailIconVariants}>
+                    <BiMailSend className='ml-2' size={25} />
+                  </motion.div>
+                )}
               </motion.button>
             </form>
           </div>
@@ -154,7 +268,7 @@ const textMotion = {
   },
 };
 
-const slashMotion = {
+const mailIconVariants = {
   rest: { opacity: 0, x: -15, ease: 'linear', duration: 0.2, type: 'tween' },
   hover: {
     opacity: 1,

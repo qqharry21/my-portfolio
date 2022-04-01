@@ -15,6 +15,17 @@ img {
   grid-area: 1 / 1 / -1 / 7;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text !important;
+}
+
 @layer base {
   html {
     @apply scroll-smooth overflow-x-hidden;
@@ -387,7 +398,7 @@ img {
 
   .animate-title,
   .animate-letter {
-    @apply text-9xl font-extrabold relative tracking-tight inline-block whitespace-nowrap laptop:text-6xl mobile:!text-4xl uppercase;
+    @apply font-extrabold relative tracking-tight inline-block whitespace-nowrap text-9xl laptop:text-6xl mobile:!text-[2.25rem] uppercase;
   }
 
   /* group-odd:border-primary-blue
