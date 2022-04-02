@@ -3,6 +3,8 @@
 import { FiGithub, FiInstagram } from 'react-icons/fi';
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
+// finsih instagram link
+
 export const about = {
   name: 'Hao Chen',
   role: 'Junior Front-end Developer',
