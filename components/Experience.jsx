@@ -1,31 +1,27 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react';
-import { experiences } from '../data';
-import { AnimatePresence, AnimateSharedLayout, motion, useAnimation } from 'framer-motion';
+import { experiences } from 'data';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import Link from 'next/link';
-import { useInView } from 'react-intersection-observer';
+import useAnimate from 'hooks/useAnimate';
+import { useTranslation } from 'next-i18next';
 
 const Experience = () => {
+  const { t } = useTranslation('experience');
   const [activeTab, setActiveTab] = useState(0);
   const [activeExperience, setActiveExperience] = useState(experiences[0]);
-  const { ref, inView } = useInView();
-  const animation = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        translateX: 0,
-        transition: {
-          duration: 1,
-          ease: 'easeInOut',
-        },
-      });
-    }
-    if (!inView) {
-      animation.start({ opacity: 0 });
-    }
-  }, [inView]);
+  const { ref, animation } = useAnimate(
+    {
+      opacity: 1,
+      translateX: 0,
+      transition: {
+        duration: 1,
+        ease: 'easeInOut',
+      },
+    },
+    { opacity: 0 }
+  );
 
   const toggleTab = index => {
     const tabs = document.querySelectorAll('.experience-tab');
@@ -46,11 +42,11 @@ const Experience = () => {
 
   return (
     <motion.section
-      className='section-container px-32 laptop:px-4'
+      className='px-32 section-container laptop:px-4'
       id='experience'
       ref={ref}
       animate={animation}>
-      <h2 className='section-heading'>My Experience</h2>
+      <h2 className='section-heading'>{t('Experience_heading')}</h2>
       <div className='experience-content'>
         <AnimateSharedLayout>
           <motion.div className='tab-list'>
@@ -73,7 +69,7 @@ const Experience = () => {
                     />
                   </AnimatePresence>
                 ) : null}
-                <span>{item.company}</span>
+                <span>{t(item.company)}</span>
               </motion.button>
             ))}
           </motion.div>
@@ -89,18 +85,18 @@ const Experience = () => {
               exit='exit'
               key={activeExperience.company}>
               <h3 className='experience-panel-heading'>
-                <span>{activeExperience.title}</span>
-                <motion.span className='text-primary-blue/50 dark:text-main/50 mx-2'>➤</motion.span>
+                <span>{t(activeExperience.position)}</span>
+                <motion.span className='mx-2 text-primary-blue/50 dark:text-main/50'>➤</motion.span>
                 <Link href='https://matic.com'>
-                  <a className='company-name'>{activeExperience.company}</a>
+                  <a className='company-name'>{t(activeExperience.company)}</a>
                 </Link>
               </h3>
-              <p className='company-work-time'>{activeExperience.during}</p>
+              <p className='company-work-time'>{t(activeExperience.during)}</p>
 
               <motion.ul>
                 {activeExperience.descriptions.map((description, index) => (
                   <motion.li className='experience-description' key={index}>
-                    {description}
+                    {t(description)}
                   </motion.li>
                 ))}
               </motion.ul>

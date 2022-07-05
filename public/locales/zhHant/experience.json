@@ -1,0 +1,10 @@
+{
+  "Experience_heading": "我的經驗",
+  "Experience_company1": "神通資訊科技",
+  "Experience_position1": "Java 工程師",
+  "Experience_during1": "七月 2020 - 現在",
+  "Experience_description1_1": "以Java為主要語言，MVC框架為主要技術，並採用Spring Boot框架，進行開發。",
+  "Experience_description1_2": "團隊使用Git來共同開發、維護與管理。",
+  "Experience_description1_3": "使用自動化測試工具協助測試。",
+  "Experience_description1_4": "使用Apache Jmeter進行專案壓力測試。"
+}

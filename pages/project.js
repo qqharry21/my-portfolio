@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Hero } from '../components';
+import { About, Hero } from '../components';
 import Layout from '../components/layout/Layout';
-const ProjectPage = () => {
+const AboutPage = () => {
   return (
-    <Layout title='Project'>
+    <Layout title='About me'>
       <Hero />
     </Layout>
   );
 };
 
-export default ProjectPage;
+export default AboutPage;

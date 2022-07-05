@@ -1,51 +1,71 @@
 /** @format */
 
-import React, { useEffect } from 'react';
-import { about } from '../data';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
+import { about } from 'data';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { useTheme } from 'next-themes';
-import { FaHandPointLeft } from 'react-icons/fa';
 import Link from 'next/link';
+import useAnimate from 'hooks/useAnimate';
+import { useTranslation } from 'next-i18next';
+
 const About = () => {
-  const { ref, inView } = useInView();
-
+  const { t } = useTranslation('about');
   const { theme } = useTheme();
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        transition: {
-          type: 'spring',
-          duration: 2,
-        },
-      });
-    }
-    if (!inView) {
-      animation.start({
-        opacity: 0,
-      });
-    }
-  }, [inView]);
+  const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
+  const { ref, animation } = useAnimate(
+    {
+      opacity: 1,
+      translateX: 0,
+      transition: {
+        duration: 1,
+        ease: 'easeInOut',
+      },
+    },
+    { opacity: 0 }
+  );
 
   return (
     <motion.section
-      className='section-container px-12 laptop:px-4 '
+      className='px-12 section-container laptop:px-4 '
       id='about'
       key='about'
       animate={animation}>
-      <motion.h2 className='section-heading'>About me</motion.h2>
-      <div className='about-content' ref={ref}>
+      <motion.h2 className='section-heading'>{t('About_heading')}</motion.h2>
+      <div ref={ref}>
         <motion.div className='about-left'>
-          <p className='mb-4'>
-            {about.description2}...
-            <Link href='/about' scroll={false}>
+          <motion.div className='float-right laptop:float-none about-right'>
+            <motion.div
+              className={`about-wrapper m-4 group after:shadow-xl ${
+                theme === 'light'
+                  ? 'border-primary-blue hover:border-gray-500'
+                  : 'border-main hover:border-primary-white'
+              }`}
+              animate={{ rotate: [2, -2] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: 'easeInOut',
+              }}>
+              <Link href='/about' scroll={false}>
+                <a>
+                  <Selfie theme={theme} isMobile={isMobile} />
+                </a>
+              </Link>
+              {/* <Image
+              src='/black.svg'
+              width={isMobile ? 210 : 384}
+              height={isMobile ? 270 : 384}
+              alt='Photo'
+              className='transition-colors duration-200 ease-in-out pointer-events-none dark:bg-main group-hover:bg-primary-blue dark:group-hover:bg-primary-white bg-primary-dark/80'
+            /> */}
+            </motion.div>
+          </motion.div>
+          <p className='mb-4 whitespace-pre-line indent-8'>
+            {t('About_description')}
+            {/* <Link href='/about' scroll={false}>
               <a className='text-primary-blue dark:text-main link'>More about me</a>
-            </Link>
+            </Link> */}
           </p>
 
           <ul className='skill-list'>
@@ -56,33 +76,6 @@ const About = () => {
             ))}
           </ul>
         </motion.div>
-        <motion.div className='about-right'>
-          <motion.div
-            className={`about-wrapper group after:shadow-xl ${
-              theme === 'light'
-                ? 'border-primary-blue hover:border-gray-500'
-                : 'border-main hover:border-primary-white'
-            }`}
-            animate={{ rotate: [2, -2] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'easeInOut',
-            }}>
-            <Link href='/about' scroll={false}>
-              <a>
-                <Selfie theme={theme} isMobile={isMobile} />
-              </a>
-            </Link>
-            {/* <Image
-              src='/black.svg'
-              width={isMobile ? 210 : 384}
-              height={isMobile ? 270 : 384}
-              alt='Photo'
-              className=' dark:bg-main group-hover:bg-primary-blue dark:group-hover:bg-primary-white bg-primary-dark/80 transition-colors duration-200 ease-in-out pointer-events-none'
-            /> */}
-          </motion.div>
-        </motion.div>
       </div>
     </motion.section>
   );
@@ -90,7 +83,7 @@ const About = () => {
 
 const Selfie = ({ theme, isMobile }) => {
   return (
-    <motion.div className=' dark:group-hover:bg-main group-hover:bg-primary-blue dark:bg-primary-white bg-primary-dark/80 transition-colors duration-200 ease-in-out pointer-events-none shadow-xl'>
+    <motion.div className='transition-colors duration-200 ease-in-out shadow-xl pointer-events-none dark:group-hover:bg-main group-hover:bg-primary-blue dark:bg-primary-white bg-primary-dark/80'>
       <svg
         version='1.0'
         xmlns='http://www.w3.org/2000/svg'

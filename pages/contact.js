@@ -94,8 +94,6 @@ const ContactPage = () => {
     }
     return errors;
   };
-  console.log('isSend', isSend);
-  console.log('isLoading', isLoading);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -170,7 +168,7 @@ const ContactPage = () => {
           <motion.div className='relative z-[5] banner-row'>
             <AnimatedLetters title='Contact' />
           </motion.div>
-          <div className=' bg-gray-300 dark:bg-secondary-gray rounded-tr-[5rem] rounded-bl-[5rem] mobile:rounded-tr-2xl mobile:rounded-bl-2xl rounded-tl-2xl rounded-br-2xl overflow-hidden -translate-y-10 laptop:-translate-y-6 mobile:!-translate-y-5 grid grid-cols-2 gap-10 laptop:block py-8 px-16 tablet:px-10 mobile:!px-5 round min-h-[50vh]'>
+          <div className='bg-gray-300 dark:bg-secondary-gray rounded-tr-[5rem] rounded-bl-[5rem] mobile:rounded-tr-2xl mobile:rounded-bl-2xl rounded-tl-2xl rounded-br-2xl overflow-hidden -translate-y-10 laptop:-translate-y-6 mobile:!-translate-y-5 grid grid-cols-2 gap-10 laptop:block py-8 px-16 tablet:px-10 mobile:!px-5 round min-h-[50vh] shadow-xl'>
             <motion.div className='laptop:my-5 tablet:my-10 justify-center items-center m-auto flex flex-col'>
               <div className='contact-description text-left text-gray-500 dark:text-gray-400 text-2xl mb-6'>
                 Feel free to contact me and I will get back to you as soon as possible.

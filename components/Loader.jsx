@@ -106,9 +106,9 @@ const Logo = ({ isTablet, theme }) => {
     <motion.div variants={svgVariants}>
       <motion.svg
         xmlns='http://www.w3.org/2000/svg'
-        width={isTablet ? '350' : '700'}
+        width={isTablet ? '300' : '700'}
         viewBox='0 0 375 375'
-        height={isTablet ? '350' : '700'}
+        height={isTablet ? '300' : '700'}
         version='1.0'>
         <motion.path
           variants={bgVariants}
