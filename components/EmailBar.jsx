@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { about } from '../data';
-import { easing } from '../utils/animation/framerAnimations';
+import { about } from 'data';
+import { easing } from 'utils/animation/framerAnimations';
 
 const container = {
   hidden: { opacity: 0, y: 200 },

@@ -1,48 +1,26 @@
 /** @format */
 
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
 import { MdOutlineWavingHand } from 'react-icons/md';
-import { btnIconVariants } from '../utils/animation/framerAnimations';
+import { btnIconVariants } from 'utils/animation/framerAnimations';
+import useAnimate from 'hooks/useAnimate';
+import { useTranslation } from 'next-i18next';
 
 const Contact = () => {
-  const { ref, inView } = useInView();
-  const animation = useAnimation();
-  // const controls = useAnimation();
-  // const handlePan = (e, info) => {
-  //   controls.set({
-  //     rotateY: info.offset.x / 2,
-  //     rotateX: -info.offset.y / 2,
-  //   });
-  //   document.querySelector('.contact-right').classList.add('cursor-grabbing');
-  // };
-
-  // const handlePanEnd = () => {
-  //   controls.start({
-  //     rotateY: 0,
-  //     rotateX: 0,
-  //   });
-
-  //   document.querySelector('.contact-right').classList.remove('cursor-grabbing');
-  // };
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        translateX: 0,
-        transition: {
-          duration: 1,
-          ease: 'easeInOut',
-        },
-      });
-    }
-    if (!inView) {
-      animation.start({ opacity: 0 });
-    }
-  }, [inView]);
+  const { t } = useTranslation('contact');
+  const { ref, animation } = useAnimate(
+    {
+      opacity: 1,
+      translateX: 0,
+      transition: {
+        duration: 1,
+        ease: 'easeInOut',
+      },
+    },
+    { opacity: 0 }
+  );
 
   return (
     <motion.section
@@ -50,36 +28,14 @@ const Contact = () => {
       id='contact'
       ref={ref}
       animate={animation}>
-      <h2 className='section-heading'>Contact Me</h2>
+      <h2 className='section-heading'>{t('Contact_heading')}</h2>
       <motion.div className='contact-content'>
-        {/* <motion.div className='contact-left'>
-          <motion.div className='contact-wrapper'>
-            <Image
-              src='/hero.png'
-              alt='photo'
-              width={isMobile ? 200 : 300}
-              height={isMobile ? 240 : 360}
-              className='contact-image rounded-full select-none'
-            />
-          </motion.div>
-        </motion.div> */}
-        {/* <motion.div
-          className='contact-right'
-          onPan={handlePan}
-          onPanEnd={handlePanEnd}
-          transformTemplate={template}
-          animate={controls}> */}
-        {/* </motion.div> */}
-        <motion.div className='contact-title'>Get In Touch</motion.div>
-        <div className='contact-description'>
-          Recently, I am looking for an opportunity to join a Frontend team where can use my
-          abilities to help the team. My inbox is always open, so feel free to contact me and I will
-          get back to you as soon as possible.
-        </div>
+        <motion.div className='contact-title'>{t('Contact_title')}</motion.div>
+        <div className='contact-description'>{t('Contact_description')}</div>
         <Link href='/contact' scroll={false} shallow>
-          <a className='flex w-full mt-4 mx-auto'>
-            <button className='btn--outline btn rounded-md capitalize text-lg flex w-full justify-center'>
-              Say Hi
+          <a className='flex w-full mx-auto mt-4'>
+            <button className='flex justify-center w-full text-lg capitalize rounded-md btn--outline btn'>
+              {t('Contact_Hi_Btn')}
               <motion.div
                 className='flex items-center justify-center my-auto'
                 variants={btnIconVariants}
@@ -93,6 +49,42 @@ const Contact = () => {
     </motion.section>
   );
 };
+
+/* <motion.div className='contact-left'>
+          <motion.div className='contact-wrapper'>
+            <Image
+              src='/hero.png'
+              alt='photo'
+              width={isMobile ? 200 : 300}
+              height={isMobile ? 240 : 360}
+              className='rounded-full select-none contact-image'
+            />
+          </motion.div>
+        </motion.div> */
+/* <motion.div
+          className='contact-right'
+          onPan={handlePan}
+          onPanEnd={handlePanEnd}
+          transformTemplate={template}
+          animate={controls}> */
+/* </motion.div> */
+// const controls = useAnimation();
+// const handlePan = (e, info) => {
+//   controls.set({
+//     rotateY: info.offset.x / 2,
+//     rotateX: -info.offset.y / 2,
+//   });
+//   document.querySelector('.contact-right').classList.add('cursor-grabbing');
+// };
+
+// const handlePanEnd = () => {
+//   controls.start({
+//     rotateY: 0,
+//     rotateX: 0,
+//   });
+
+//   document.querySelector('.contact-right').classList.remove('cursor-grabbing');
+// };
 
 // const template = ({ rotateY, rotateX }) => {
 //   return `perspective(800px) rotateX(${rotateX}) rotateY(${rotateY})`;

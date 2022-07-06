@@ -2,7 +2,7 @@
 
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
-import { url } from '../utils/url';
+import { URL } from 'lib/server';
 
 const Meta = ({ title, keywords, description }) => {
   return (
@@ -34,12 +34,12 @@ const Meta = ({ title, keywords, description }) => {
         openGraph={{
           type: 'website',
           locale: 'zh_TW',
-          url,
+          url: `${URL}`,
           description: description,
           site_name: title,
           images: [],
         }}
-        canonical={url}
+        canonical={URL}
       />
     </>
   );

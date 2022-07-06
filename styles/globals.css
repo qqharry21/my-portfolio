@@ -1,5 +1,5 @@
 /** @format */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,9 +10,6 @@
 }
 img {
   -webkit-user-drag: none;
-}
-.project-content {
-  grid-area: 1 / 1 / -1 / 7;
 }
 
 ::-webkit-scrollbar {
@@ -34,20 +31,28 @@ select:-webkit-autofill:active {
   -webkit-background-clip: text !important;
 }
 
+.project-content {
+  grid-area: 1 / 1 / -1 / 7;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
 @layer base {
   html {
-    @apply scroll-smooth overflow-x-hidden;
+    @apply scroll-smooth;
   }
 
   body {
-    @apply dark:bg-primary-dark dark:text-secondary-white bg-primary-white text-secondary-gray p-0 m-0 font-Poppins;
+    @apply p-0 m-0 overflow-x-hidden dark:bg-primary-dark dark:text-secondary-white bg-primary-white text-secondary-gray font-Poppins;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply leading-7 text-2xl font-bold select-none;
+    @apply text-2xl font-bold leading-7 select-none;
   }
   h1 {
     @apply text-6xl tablet:text-4xl;
@@ -86,7 +91,7 @@ select:-webkit-autofill:active {
   }
 
   .center {
-    @apply text-center items-center flex;
+    @apply flex items-center text-center;
   }
 
   .link {
@@ -94,7 +99,7 @@ select:-webkit-autofill:active {
   }
 
   .btn {
-    @apply block cursor-pointer px-2 py-5 font-medium text-base lowercase transition-transform duration-200 ease-in-out;
+    @apply block px-2 py-5 text-base font-medium lowercase transition-transform duration-200 ease-in-out cursor-pointer;
   }
 
   .btn--outline {
@@ -134,7 +139,7 @@ select:-webkit-autofill:active {
 
   /** Left Media */
   .left-media {
-    @apply w-10 fixed bottom-0 left-10 right-auto z-10 laptop:left-5 laptop:right-auto tablet:hidden;
+    @apply fixed bottom-0 right-auto z-10 w-10 left-10 laptop:left-5 laptop:right-auto tablet:hidden;
   }
 
   .left-list {
@@ -147,12 +152,12 @@ select:-webkit-autofill:active {
 
   /** Social Icon */
   .social-icon {
-    @apply p-3 text-gray-500 dark:hover:text-main hover:text-primary-blue transition-colors duration-300 ease-in-out;
+    @apply p-3 text-gray-500 transition-colors duration-300 ease-in-out dark:hover:text-main hover:text-primary-blue;
   }
 
   /** Right Media */
   .right-media {
-    @apply w-10 fixed bottom-0 left-auto right-10 z-10 laptop:left-auto laptop:right-5 tablet:hidden;
+    @apply fixed bottom-0 left-auto z-10 w-10 right-10 laptop:left-auto laptop:right-5 tablet:hidden;
   }
 
   .right-list {
@@ -160,7 +165,7 @@ select:-webkit-autofill:active {
   }
 
   .right-link {
-    @apply mx-auto my-5 p-2 tracking-widest inline-block;
+    @apply inline-block p-2 mx-auto my-5 tracking-widest;
   }
 
   /** Footer */
@@ -173,7 +178,7 @@ select:-webkit-autofill:active {
   }
 
   .social-media-list {
-    @apply flex justify-between items-center p-0 m-0;
+    @apply flex items-center justify-between p-0 m-0;
   }
 
   .social-media-item {
@@ -182,7 +187,7 @@ select:-webkit-autofill:active {
 
   /** Section */
   .section-container {
-    @apply tablet:flex-col min-h-screen justify-center px-6 flex flex-col m-auto mt-10;
+    @apply flex flex-col justify-center min-h-screen px-6 m-auto mt-10 tablet:flex-col;
   }
 
   .section-heading {
@@ -195,8 +200,7 @@ select:-webkit-autofill:active {
   }
 
   .hero-head {
-    @apply tracking-widest text-primary-blue dark:text-main
-    mt-0 mr-0 mb-6 ml-1 font-normal laptop:mt-20;
+    @apply mt-0 mb-6 ml-1 mr-0 font-normal tracking-widest text-primary-blue dark:text-main laptop:mt-20;
   }
 
   .hero-title {
@@ -209,7 +213,7 @@ select:-webkit-autofill:active {
   }
 
   .hero-description {
-    @apply tracking-wide dark:text-secondary-white/40 mt-5 mx-0 mb-0 max-w-3xl mobile:text-lg tablet:pr-1;
+    @apply max-w-3xl mx-0 mt-5 mb-0 tracking-wide dark:text-secondary-white/40 mobile:text-lg tablet:pr-1;
   }
 
   .hero-resume {
@@ -218,7 +222,7 @@ select:-webkit-autofill:active {
 
   /** About */
   .about-content {
-    @apply laptop:block grid grid-cols-2 gap-10;
+    @apply grid grid-cols-2 gap-10 laptop:block;
   }
 
   .about-left {
@@ -226,8 +230,7 @@ select:-webkit-autofill:active {
   }
 
   .skill-list {
-    @apply grid-cols-2 grid capitalize gap-x-6 gap-y-2 p-0 mt-5 overflow-hidden dark:text-primary-white/40 text-primary-gray/60 w-max laptop:mt-8 laptop:mx-auto
-    mobile:grid-cols-1;
+    @apply grid grid-cols-2 p-0 mt-5 overflow-hidden capitalize gap-x-6 gap-y-2 dark:text-primary-white/40 text-primary-gray/60 w-max laptop:mt-8 laptop:mx-auto mobile:grid-cols-1;
   }
 
   .skill-item {
@@ -239,7 +242,7 @@ select:-webkit-autofill:active {
   }
 
   .about-right {
-    @apply min-w-max justify-center items-center mx-auto max-w-xs laptop:my-10;
+    @apply items-center justify-center max-w-xs mx-auto min-w-max laptop:my-10;
   }
 
   .about-wrapper {
@@ -257,7 +260,7 @@ select:-webkit-autofill:active {
 
   /** Loader */
   .loader {
-    @apply h-screen z-50 bg-primary-white dark:bg-primary-dark text-white flex justify-center items-center;
+    @apply z-50 flex items-center justify-center h-screen text-white bg-primary-white dark:bg-primary-dark;
   }
 
   /** Experience */
@@ -270,7 +273,7 @@ select:-webkit-autofill:active {
   }
 
   .experience-tab {
-    @apply text-gray-500 relative flex items-center w-full h-10 px-5 mobile:px-4 pt-0 pb-1 mobile:pb-0 text-left border-gray-300 dark:border-gray-500 border-l-2 mobile:border-b-2 mobile:border-l-0 border-solid rounded-r-md  hover:rounded-r-md  mobile:rounded-r-none mobile:hover:rounded-t-md  mobile:hover:rounded-b-none whitespace-nowrap cursor-pointer hover:text-primary-blue/70 focus:text-primary-blue  dark:hover:text-main/70 dark:focus:text-main;
+    @apply relative flex items-center w-full h-10 px-5 pt-0 pb-1 text-left text-gray-500 border-l-2 border-gray-300 border-solid cursor-pointer mobile:px-4 mobile:pb-0 dark:border-gray-500 mobile:border-b-2 mobile:border-l-0 rounded-r-md hover:rounded-r-md mobile:rounded-r-none mobile:hover:rounded-t-md mobile:hover:rounded-b-none whitespace-nowrap hover:text-primary-blue/70 focus:text-primary-blue dark:hover:text-main/70 dark:focus:text-main;
   }
 
   .active-tab {
@@ -283,11 +286,11 @@ select:-webkit-autofill:active {
 
   /** Experience */
   .experience-wrapper {
-    @apply ml-5 mobile:ml-0 w-full relative;
+    @apply relative w-full ml-5 mobile:ml-0;
   }
 
   .experience-panel {
-    @apply w-full h-auto py-2 px-1 mobile:ml-0;
+    @apply w-full h-auto px-1 py-2 mobile:ml-0;
   }
 
   .experience-panel-heading {
@@ -299,7 +302,7 @@ select:-webkit-autofill:active {
   }
 
   .company-work-time {
-    @apply font-medium mb-6 text-gray-500 flex;
+    @apply flex mb-6 font-medium text-gray-500;
   }
 
   .experience-description {
@@ -325,12 +328,24 @@ select:-webkit-autofill:active {
   }
 
   .project-label {
-    @apply mb-2 mx-0 font-medium text-primary-blue dark:text-main;
+    @apply mx-0 mb-2 font-medium text-primary-blue dark:text-main;
   }
 
   .project-title {
-    @apply text-primary-dark/90 dark:text-primary-white/90
-    tablet:text-primary-dark dark:tablet:text-primary-white font-semibold leading-7 mb-5 tablet:mb-0;
+    @apply relative mb-5 font-bold leading-7 text-primary-dark dark:text-primary-white tablet:text-primary-dark dark:tablet:text-primary-white tablet:mb-0;
+  }
+
+  .project-title:after {
+    content: attr(text);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    color: transparent;
+    -webkit-text-stroke: 0.15vw #e2e8f0;
+    z-index: 5;
+  }
+  .project-title:after {
   }
 
   .project-title-link {
@@ -346,16 +361,15 @@ select:-webkit-autofill:active {
   }
 
   .project-tech-list {
-    @apply p-0 mt-6 mb-2 mx-0 z-[2] flex flex-wrap relative
-    tablet:my-2 group-odd:justify-end  tablet:group-odd:justify-start;
+    @apply relative flex z-[2] flex-wrap p-0 mx-0 mt-6 mb-2 tablet:my-2 group-odd:justify-end tablet:group-odd:justify-start;
   }
 
   .project-tech-item {
-    @apply mt-0 mr-5 mb-1 ml-0 text-gray-500 text-base whitespace-nowrap tablet:mr-2 tablet:text-gray-600 group-odd:ml-5 group-odd:mr-0 tablet:group-odd:ml-0 tablet:group-odd:mr-2 focus:outline-none focus:outline-offset-0;
+    @apply mt-0 mb-1 ml-0 mr-5 text-base text-gray-400 whitespace-nowrap tablet:mr-2 group-odd:ml-5 group-odd:mr-0 tablet:group-odd:ml-0 tablet:group-odd:mr-2 focus:outline-none focus:outline-offset-0;
   }
 
   .project-links {
-    @apply text-primary-dark dark:text-primary-white flex items-center relative mt-2 -ml-2 group-odd:justify-end group-odd:ml-0 group-odd:-mr-2 tablet:group-odd:justify-start tablet:group-odd:-ml-2 tablet:group-odd:mr-0;
+    @apply relative flex items-center mt-2 -ml-2 text-primary-dark dark:text-primary-white group-odd:justify-end group-odd:ml-0 group-odd:-mr-2 tablet:group-odd:justify-start tablet:group-odd:-ml-2 tablet:group-odd:mr-0;
   }
 
   .project-link-icon {
@@ -363,7 +377,7 @@ select:-webkit-autofill:active {
   }
 
   .project-image {
-    @apply shadow-lg row-[1/-1] col-[6/-1] relative z-[1] tablet:opacity-25 tablet:h-full tablet:col-[1/-1] group-odd:col-[1/8] w-full h-full tablet:group-odd:col-[1/-1] hover:shadow-md focus:outline-none focus:outline-offset-0 transition-shadow duration-500 ease-in-out before:content-[""] before:w-full before:h-full before:absolute before:z-[2] before:inset-0 dark:before:bg-[#2d303e] before:bg-gray-500 before:mix-blend-multiply;
+    @apply shadow-lg row-[1/-1] col-[6/-1] relative z-[1] tablet:opacity-25 tablet:h-full tablet:col-[1/-1] group-odd:col-[1/8] w-full h-full tablet:group-odd:col-[1/-1] hover:shadow-md hover:outline-none focus:outline-none focus:outline-offset-0 transition-shadow duration-500 ease-in-out before:content-[""] before:w-full before:h-full before:absolute before:z-[2] before:inset-0 before:bg-gray-200 before:mix-blend-multiply before:rounded-md;
   }
 
   /**  */
@@ -373,11 +387,11 @@ select:-webkit-autofill:active {
   /* @apply grid grid-cols-2 gap-10 laptop:block; */
 
   .contact-left {
-    /* @apply min-w-max justify-center items-center max-w-max laptop:my-10; */
+    /* @apply items-center justify-center min-w-max max-w-max laptop:my-10; */
   }
 
   .contact-right {
-    @apply text-xl grid gap-5 text-primary-gray dark:text-primary-white;
+    @apply grid gap-5 text-xl text-primary-gray dark:text-primary-white;
   }
 
   .contact-title {
@@ -389,7 +403,7 @@ select:-webkit-autofill:active {
   }
 
   .contact-wrapper {
-    @apply relative mx-auto items-center justify-center max-w-max;
+    @apply relative items-center justify-center mx-auto max-w-max;
   }
 
   .contact-image {
@@ -397,7 +411,7 @@ select:-webkit-autofill:active {
   }
 
   .banner-row {
-    @apply overflow-hidden flex items-center;
+    @apply flex items-center overflow-hidden;
   }
 
   .animate-letter {
@@ -407,6 +421,39 @@ select:-webkit-autofill:active {
   .animate-title,
   .animate-letter {
     @apply font-extrabold relative tracking-tight inline-block whitespace-nowrap text-9xl laptop:text-6xl mobile:!text-[2.25rem] uppercase;
+  }
+
+  /** about page */
+  .about-slider {
+    @apply relative max-w-5xl bg-gray-300 p-6 mobile:p-4 mobile:pb-6 dark:bg-secondary-gray shadow-xl rounded-3xl h-auto laptop:max-w-2xl tablet:!max-w-lg  mx-auto top-4 tablet:top-[110px];
+  }
+
+  .about-slider__wrp {
+    @apply relative w-full h-full z-[1] flex box-content;
+  }
+
+  .about-slider__item {
+    @apply relative flex flex-row items-center w-full h-full tablet:flex-col shrink-0;
+  }
+
+  .about-slider__img {
+    @apply shrink-0 h-[400px] tablet:h-72 w-[300px] rounded-3xl bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg overflow-hidden tablet:w-[90%] mobile:!w-[95%] tablet:-translate-y-[50%] relative -translate-x-20 tablet:translate-x-0;
+  }
+
+  .about-slider__content {
+    @apply tablet:-mt-[80px] pl-1 tablet:p-0 tablet:items-center text-left tablet:text-center;
+  }
+
+  .about-slider__date {
+    @apply block mb-4 font-medium text-gray-500 dark:text-gray-400;
+  }
+
+  .about-slider__title {
+    @apply mb-5 text-3xl font-semibold mobile:text-2xl;
+  }
+
+  .about-slider__text {
+    @apply mb-5 leading-5;
   }
 
   /* group-odd:border-primary-blue

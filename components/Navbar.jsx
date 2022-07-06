@@ -5,8 +5,11 @@ import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { motion } from 'framer-motion';
-import { fadeIn } from '../utils/animation/framerAnimations';
+import { fadeIn } from 'utils/animation/framerAnimations';
 import Link from 'next/link';
+import { MdLanguage } from 'react-icons/md';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 const navItem = {
   hidden: { opacity: 0, translateX: 100, translateY: -100 },
@@ -20,22 +23,33 @@ const navItem = {
 const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
   const navList = [
     {
-      title: 'About',
+      title: 'Nav_About',
       href: isHomePage ? '#about' : '/about',
     },
     {
-      title: 'Experience',
+      title: 'Nav_Experience',
       href: isHomePage ? '#experience' : '/experience',
     },
     {
-      title: 'Project',
+      title: 'Nav_Project',
       href: isHomePage ? '#project' : '/project',
     },
     {
-      title: 'Contact',
+      title: 'Nav_Contact',
       href: isHomePage ? '#contact' : '/contact',
     },
   ];
+  const router = useRouter();
+  const toggleLocale = () => {
+    const lang = localStorage.getItem('lang');
+    if (lang === 'en' || router.locale === 'en') {
+      localStorage.setItem('lang', 'zhHant');
+      router.push(router.route, router.asPath, { locale: 'zhHant' });
+    } else {
+      localStorage.setItem('lang', 'en');
+      router.push(router.route, router.asPath, { locale: 'en' });
+    }
+  };
   return (
     <nav className='center nav'>
       <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
@@ -60,6 +74,17 @@ const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNa
         )}
       </motion.button>
 
+      {/* Locale Btn */}
+      <motion.button
+        type='button'
+        variants={fadeIn}
+        onClick={toggleLocale}
+        className='flex items-center ml-4 uppercase btn btn--icon nav__theme'
+        aria-label='toggle locale'>
+        {router.locale === 'en' ? 'EN' : '中文'}
+        <MdLanguage size={24} className='ml-1 text-primary-blue dark:text-main' />
+      </motion.button>
+
       {/* Media Navbar Btn */}
       <motion.button
         type='button'
@@ -78,6 +103,7 @@ const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNa
 };
 
 const NavbarItem = ({ toggleMediaNavbar, title, href, index }) => {
+  const { t } = useTranslation();
   return (
     <motion.li
       className='nav__list-item'
@@ -86,7 +112,7 @@ const NavbarItem = ({ toggleMediaNavbar, title, href, index }) => {
       transition={{ delay: 0.1 * index, ease: 'easeIn' }}>
       <Link href={href} shallow scroll={false}>
         <a onClick={toggleMediaNavbar} className='link link--nav'>
-          {title}
+          {t(title)}
         </a>
       </Link>
     </motion.li>

@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { SocialIcon } from '.';
-import { socialMedia } from '../data';
-import { easing } from '../utils/animation/framerAnimations';
+import { socialMedia } from 'data';
+import { easing } from 'utils/animation/framerAnimations';
 
 const container = {
   hidden: { opacity: 0, y: 200 },

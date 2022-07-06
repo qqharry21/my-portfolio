@@ -10,7 +10,10 @@ const AnimatedLetters = ({ title, disabled }) => {
       initial='initial'
       animate='animate'>
       {[...title].map((letter, i) => (
-        <motion.span className='animate-letter' key={i} variants={disabled ? null : fadeInUp}>
+        <motion.span
+          className='animate-letter text-shadow '
+          key={i}
+          variants={disabled ? null : fadeInUp}>
           {letter}
         </motion.span>
       ))}

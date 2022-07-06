@@ -1,11 +1,13 @@
 /** @format */
 import React, { useEffect, useState } from 'react';
+import { appWithTranslation } from 'next-i18next';
 import '../styles/globals.css';
 import 'animate.css';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { EmailBar, Footer, Header, Loader, Meta, ScrollToTop, SocialBar } from '../components';
+import nextI18nextConfig from 'next-i18next.config';
 
 const MyApp = ({ Component, pageProps, router }) => {
   const { pathname } = useRouter();
@@ -51,4 +53,4 @@ const MyApp = ({ Component, pageProps, router }) => {
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp, nextI18nextConfig);

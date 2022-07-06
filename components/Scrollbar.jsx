@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React, { useEffect } from 'react';
-import { sections } from '../data';
+import { sections } from 'data';
 
 const container = {
   hidden: { opacity: 0 },
