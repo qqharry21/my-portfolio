@@ -87,8 +87,10 @@ const Experience = () => {
               <h3 className='experience-panel-heading'>
                 <span>{t(activeExperience.position)}</span>
                 <motion.span className='mx-2 text-primary-blue/50 dark:text-main/50'>➤</motion.span>
-                <Link href='https://matic.com'>
-                  <a className='company-name'>{t(activeExperience.company)}</a>
+                <Link href={activeExperience.link}>
+                  <a className='leading-8 company-name' rel='noopener noreferrer' target='_blank'>
+                    {t(activeExperience.company)}
+                  </a>
                 </Link>
               </h3>
               <p className='company-work-time'>{t(activeExperience.during)}</p>

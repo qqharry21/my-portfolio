@@ -1,7 +1,7 @@
 /** @format */
 
 import { motion } from 'framer-motion';
-import { SocialIcon } from '.';
+import { SocialIcon } from './';
 import { socialMedia } from 'data';
 import { easing } from 'utils/animation/framerAnimations';
 

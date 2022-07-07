@@ -2,14 +2,16 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { btnIconVariants } from 'utils/animation/framerAnimations';
 import useAnimate from 'hooks/useAnimate';
 import { useTranslation } from 'next-i18next';
+import { ContactForm } from '.';
 
 const Contact = () => {
   const { t } = useTranslation('contact');
+  const [showForm, setShowForm] = useState(false);
   const { ref, animation } = useAnimate(
     {
       opacity: 1,
@@ -22,31 +24,47 @@ const Contact = () => {
     { opacity: 0 }
   );
 
+  const handleSwitchToForm = () => {
+    setShowForm(true);
+  };
+
   return (
-    <motion.section
-      className='section-container px-5 laptop:px-4 max-w-[800px]'
-      id='contact'
-      ref={ref}
-      animate={animation}>
-      <h2 className='section-heading'>{t('Contact_heading')}</h2>
-      <motion.div className='contact-content'>
-        <motion.div className='contact-title'>{t('Contact_title')}</motion.div>
-        <div className='contact-description'>{t('Contact_description')}</div>
-        <Link href='/contact' scroll={false} shallow>
-          <a className='flex w-full mx-auto mt-4'>
-            <button className='flex justify-center w-full text-lg capitalize rounded-md btn--outline btn'>
-              {t('Contact_Hi_Btn')}
-              <motion.div
-                className='flex items-center justify-center my-auto'
-                variants={btnIconVariants}
-                animate='animate'>
-                <MdOutlineWavingHand className='ml-2' size={20} />
-              </motion.div>
-            </button>
-          </a>
-        </Link>
-      </motion.div>
-    </motion.section>
+    <>
+      {showForm ? (
+        <motion.section
+          className='tablet:flex-col min-h-screen justify-center px-6 flex flex-col max-w-[800px] m-auto'
+          id='contact'
+          ref={ref}
+          animate={animation}>
+          <ContactForm />
+        </motion.section>
+      ) : (
+        <motion.section
+          className='section-container px-5 laptop:px-4 max-w-[800px]'
+          id='contact'
+          ref={ref}
+          animate={animation}>
+          <h2 className='section-heading'>{t('Contact_heading')}</h2>
+          <motion.div className='contact-content'>
+            <motion.div className='contact-title'>{t('Contact_title')}</motion.div>
+            <div className='contact-description'>{t('Contact_description')}</div>
+            <div className='flex w-full mx-auto mt-4'>
+              <button
+                className='flex justify-center w-full text-lg capitalize rounded-md btn--outline btn'
+                onClick={handleSwitchToForm}>
+                {t('Contact_Hi_Btn')}
+                <motion.div
+                  className='flex items-center justify-center my-auto'
+                  variants={btnIconVariants}
+                  animate='animate'>
+                  <MdOutlineWavingHand className='ml-2' size={20} />
+                </motion.div>
+              </button>
+            </div>
+          </motion.div>
+        </motion.section>
+      )}
+    </>
   );
 };
 

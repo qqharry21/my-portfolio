@@ -1,6 +1,16 @@
 {
   "Contact_heading": "聯絡我",
   "Contact_title": "Get In Touch",
-  "Contact_description": "最近，我正在尋找一個前端工程師(React)的工作，並在那裡利用我的能力來幫助團隊，提升工作效率。 我的信箱永遠有效，所以請隨時與我聯繫，我會盡快回复您。",
-  "Contact_Hi_Btn": "嗨囉"
+  "Contact_description": "最近，我正在尋找一個前端工程師(React)的工作，並在那裡利用我的能力來幫助團隊，提升工作效率。 我的信箱永遠有效，所以請隨時與我聯繫，我會盡快回覆您。",
+  "Contact_Hi_Btn": "嗨囉",
+  "Contact_Page_Title": "聯絡我",
+  "Contact_Page_Description": "請隨時與我聯繫，我會盡快回覆您。",
+  "Contact_Page_Name": "姓名",
+  "Contact_Page_Email": "信箱",
+  "Contact_Page_Message": "訊息",
+  "Contact_Page_Send": "發送",
+  "Contact_Page_Name_placeholder": "請輸入您的姓名",
+  "Contact_Page_Email_placeholder": "請輸入您的信箱",
+  "Contact_Page_Message_placeholder": "問我任何事...",
+  "Contact_Page_Copy": "點擊複製"
 }

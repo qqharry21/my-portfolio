@@ -6,4 +6,5 @@ module.exports = {
     locales: ['en', 'zhHant'],
   },
   localePath: path.resolve('./public/locales'),
+  react: { useSuspense: false },
 };

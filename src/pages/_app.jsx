@@ -6,7 +6,9 @@ import 'animate.css';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
-import { EmailBar, Footer, Header, Loader, Meta, ScrollToTop, SocialBar } from '../components';
+import { ScrollToTop } from 'components';
+import { Header, EmailBar, SocialBar } from '@/components/Nav';
+import { Meta, Footer, Loader } from '../main';
 import nextI18nextConfig from 'next-i18next.config';
 
 const MyApp = ({ Component, pageProps, router }) => {

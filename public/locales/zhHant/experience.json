@@ -1,10 +1,17 @@
 {
   "Experience_heading": "我的經驗",
   "Experience_company1": "神通資訊科技",
-  "Experience_position1": "Java 工程師",
-  "Experience_during1": "七月 2020 - 現在",
-  "Experience_description1_1": "以Java為主要語言，MVC框架為主要技術，並採用Spring Boot框架，進行開發。",
-  "Experience_description1_2": "團隊使用Git來共同開發、維護與管理。",
-  "Experience_description1_3": "使用自動化測試工具協助測試。",
-  "Experience_description1_4": "使用Apache Jmeter進行專案壓力測試。"
+  "Experience_position1": "Java 工程師 - 實習生",
+  "Experience_during1": "七月 2020 - 七月 2021",
+  "Experience_description1_1": "與現有團隊一起使用 Spring Boot 和 MVC 完成銀行貸後管理系統的開發。",
+  "Experience_description1_2": "學習如何使用Maven來進行專案維護",
+  "Experience_description1_3": "協助測試問題後並將問題修復。",
+  "Experience_company2": "神通資訊科技",
+  "Experience_position2": "Java 工程師",
+  "Experience_during2": "七月 2021 - 現在",
+  "Experience_description2_1": "跟隨新的團隊順利完成銀行後端系統維護案的開發。",
+  "Experience_description2_2": "以Java為主要語言，MVC框架為主要技術，並採用Spring Boot框架，進行開發。",
+  "Experience_description2_3": "團隊使用Git來共同開發、維護與管理。",
+  "Experience_description2_4": "使用自動化測試工具協助測試。",
+  "Experience_description2_5": "使用Apache Jmeter進行專案壓力測試。"
 }

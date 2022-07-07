@@ -46,7 +46,7 @@ const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: 'Harry Chen | FullStack Developer',
+  title: 'Harry Chen | Frontend Developer',
   keywords: 'web development, programming, web design, react js, tailwindcss, next js',
   description: "Harry Chen's portfolio, developer.",
 };

@@ -90,7 +90,7 @@ const Project = () => {
           );
         })}
       </ul>
-      <Link href='/project'>
+      {/* <Link href='/project'>
         <a className='flex mx-auto'>
           <button className='flex px-5 capitalize rounded-md btn btn--outline '>
             {t('Project_more')}
@@ -102,7 +102,7 @@ const Project = () => {
             </motion.div>
           </button>
         </a>
-      </Link>
+      </Link> */}
     </motion.section>
   );
 };

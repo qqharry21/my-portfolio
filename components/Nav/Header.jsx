@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-import { Navbar } from '.';
+import { Navbar } from './';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
