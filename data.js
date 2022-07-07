@@ -3,8 +3,6 @@
 import { FiGithub, FiInstagram } from 'react-icons/fi';
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
-// finsih instagram link
-
 export const about = {
   name: 'Hao Chen',
   role: 'Junior Front-end Developer',
@@ -26,11 +24,24 @@ export const experiences = [
     company: 'Experience_company1',
     position: 'Experience_position1',
     during: 'Experience_during1',
+    link: 'https://www.mitac.com.tw/',
     descriptions: [
       'Experience_description1_1',
       'Experience_description1_2',
       'Experience_description1_3',
-      'Experience_description1_4',
+    ],
+  },
+  {
+    company: 'Experience_company2',
+    position: 'Experience_position2',
+    during: 'Experience_during2',
+    link: 'https://www.mitac.com.tw/',
+    descriptions: [
+      'Experience_description2_1',
+      'Experience_description2_2',
+      'Experience_description2_3',
+      'Experience_description2_4',
+      'Experience_description2_5',
     ],
   },
 ];

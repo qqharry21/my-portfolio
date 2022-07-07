@@ -1,7 +1,7 @@
 /** @format */
 import React from 'react';
 import { About, Contact, Experience, Hero, Project } from 'components';
-import Layout from '@/components/layout/Layout';
+import { Layout } from '../main';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18nextConfig from 'next-i18next.config';
 
@@ -17,8 +17,6 @@ const Home = () => {
   );
 };
 
-// export default function Home...
-
 export async function getStaticProps({ locale }) {
   return {
     props: {
@@ -32,13 +30,4 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-// Home.getInitialProps = async () => ({
-//   namespacesRequired: ['common'],
-// });
-
-// Home.propTypes = {
-//   t: PropTypes.func.isRequired,
-// };
-
-// export default withTranslation('common')(Home);
 export default Home;

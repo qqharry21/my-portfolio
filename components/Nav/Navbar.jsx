@@ -24,19 +24,19 @@ const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNa
   const navList = [
     {
       title: 'Nav_About',
-      href: isHomePage ? '#about' : '/about',
+      href: '#about',
     },
     {
       title: 'Nav_Experience',
-      href: isHomePage ? '#experience' : '/experience',
+      href: '#experience',
     },
     {
       title: 'Nav_Project',
-      href: isHomePage ? '#project' : '/project',
+      href: '#project',
     },
     {
       title: 'Nav_Contact',
-      href: isHomePage ? '#contact' : '/contact',
+      href: '#contact',
     },
   ];
   const router = useRouter();

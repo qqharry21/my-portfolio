@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { SocialIcon } from '.';
+import { SocialIcon } from '@/components/Nav';
 import { socialMedia } from 'data';
 
 const Footer = () => {

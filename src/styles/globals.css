@@ -342,7 +342,7 @@ select:-webkit-autofill:active {
     left: 0;
     top: 0;
     color: transparent;
-    -webkit-text-stroke: 0.15vw #e2e8f0;
+    -webkit-text-stroke: 0.1vw #e2e8f0;
     z-index: 5;
   }
   .project-title:after {

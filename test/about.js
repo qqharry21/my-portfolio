@@ -1,10 +1,10 @@
 /** @format */
 
 import React from 'react';
-import { AnimateSharedLayout, motion } from 'framer-motion';
-import Layout from '../components/layout/Layout';
+import { motion } from 'framer-motion';
+import Layout from '../src/main/Layout';
 import Image from 'next/image';
-import { AnimatedLetters } from '../components/animate';
+import { AnimatedLetters } from '@/components/animate';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
 const AboutPage = () => {
@@ -18,8 +18,8 @@ const AboutPage = () => {
   return (
     <Layout title='About Me'>
       <motion.section className='tablet:flex-col min-h-screen justify-center px-6 mobile:px-0 flex flex-col max-w-[800px] m-auto'>
-        <div className=' mt-20 '>
-          <div className='flex items-center w-fit mx-auto'>
+        <div className='mt-20 '>
+          <div className='flex items-center mx-auto w-fit'>
             <motion.div className=' banner-row z-[5] relative'>
               <AnimatedLetters title='About' />
             </motion.div>
@@ -42,7 +42,7 @@ const AboutPage = () => {
                   <div className='about-slider__text'>{description}</div>
                   {isTablet ? (
                     <Link href='#'>
-                      <a className='btn btn--outline max-w-fit uppercase rounded-lg tablet:mx-auto'>
+                      <a className='uppercase rounded-lg btn btn--outline max-w-fit tablet:mx-auto'>
                         READ MORE
                       </a>
                     </Link>

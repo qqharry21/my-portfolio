@@ -67,7 +67,9 @@ const About = () => {
               <a className='text-primary-blue dark:text-main link'>More about me</a>
             </Link> */}
           </p>
-
+          <h3 className='laptop:text-center text-primary-blue dark:text-main'>
+            {t('About_skills')}
+          </h3>
           <ul className='skill-list'>
             {about.skills.map((skill, index) => (
               <li key={index} className='skill-item'>
