@@ -20,7 +20,13 @@ const navItem = {
   },
 };
 
-const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNavbar }) => {
+const Navbar = ({
+  theme,
+  isHomePage,
+  toggleTheme,
+  showMediaNavbar,
+  toggleMediaNavbar,
+}) => {
   const navList = [
     {
       title: 'Nav_About',
@@ -55,7 +61,12 @@ const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNa
       <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
         {navList.map((list, index) => {
           return (
-            <NavbarItem key={index} {...list} index={index} toggleMediaNavbar={toggleMediaNavbar} />
+            <NavbarItem
+              key={index}
+              {...list}
+              index={index}
+              toggleMediaNavbar={toggleMediaNavbar}
+            />
           );
         })}
       </motion.ul>
@@ -81,7 +92,7 @@ const Navbar = ({ theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNa
         onClick={toggleLocale}
         className='flex items-center ml-4 uppercase btn btn--icon nav__theme'
         aria-label='toggle locale'>
-        {router.locale === 'en' ? 'EN' : '中文'}
+        {router.locale === 'en' ? 'EN' : '中'}
         <MdLanguage size={24} className='ml-1 text-primary-blue dark:text-main' />
       </motion.button>
 

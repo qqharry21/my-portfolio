@@ -113,7 +113,7 @@ select:-webkit-autofill:active {
 
 @layer components {
   .header {
-    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 mobile:!h-20 tablet:px-12 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
+    @apply h-32 w-full justify-between px-16 py-0 fixed z-[25] tablet:h-24 mobile:!h-20 tablet:px-8 bg-primary-white dark:bg-primary-dark transition-shadow duration-200 ease-in-out;
   }
 
   .selected {
@@ -121,7 +121,7 @@ select:-webkit-autofill:active {
   }
 
   .nav__list {
-    @apply flex mr-6 tablet:hidden tablet:flex-col tablet:justify-center tablet:items-center tablet:fixed tablet:inset-0 tablet:w-full tablet:h-screen tablet:z-40 dark:tablet:bg-primary-dark tablet:bg-primary-white tablet:text-primary-dark dark:tablet:text-primary-white;
+    @apply flex mr-6 tablet:hidden tablet:flex-col tablet:justify-center tablet:items-center tablet:fixed tablet:inset-0 tablet:w-full overscroll-none tablet:h-screen tablet:z-40 dark:tablet:bg-primary-dark tablet:bg-primary-white tablet:text-primary-dark dark:tablet:text-primary-white;
   }
 
   .nav__list-item {
