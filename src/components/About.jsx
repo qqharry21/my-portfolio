@@ -53,7 +53,7 @@ const About = () => {
               }}>
               <Image
                 className='rounded-md'
-                src='/me.JPG'
+                src='/me.jpg'
                 alt='Me'
                 width={isMobile ? 200 : 400}
                 height={isMobile ? 200 : 400}
