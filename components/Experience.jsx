@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react';
-import { experiences } from 'data';
+import { EXPERIENCES } from 'data';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import Link from 'next/link';
 import useAnimate from 'hooks/useAnimate';
@@ -10,7 +10,7 @@ import { useTranslation } from 'next-i18next';
 const Experience = () => {
   const { t } = useTranslation('experience');
   const [activeTab, setActiveTab] = useState(0);
-  const [activeExperience, setActiveExperience] = useState(experiences[0]);
+  const [activeExperience, setActiveExperience] = useState(EXPERIENCES[0]);
   const { ref, animation } = useAnimate(
     {
       opacity: 1,
@@ -37,7 +37,7 @@ const Experience = () => {
   }, []);
 
   useEffect(() => {
-    setActiveExperience(experiences[activeTab]);
+    setActiveExperience(EXPERIENCES[activeTab]);
   }, [activeTab]);
 
   return (
@@ -50,7 +50,7 @@ const Experience = () => {
       <div className='experience-content'>
         <AnimateSharedLayout>
           <motion.div className='tab-list'>
-            {experiences.map((item, index) => (
+            {EXPERIENCES.map((item, index) => (
               <motion.button
                 className='experience-tab'
                 id={`tab-${index}`}
@@ -86,9 +86,14 @@ const Experience = () => {
               key={activeExperience.company}>
               <h3 className='experience-panel-heading'>
                 <span>{t(activeExperience.position)}</span>
-                <motion.span className='mx-2 text-primary-blue/50 dark:text-main/50'>➤</motion.span>
+                <motion.span className='mx-2 text-primary-blue/50 dark:text-main/50'>
+                  ➤
+                </motion.span>
                 <Link href={activeExperience.link}>
-                  <a className='leading-8 company-name' rel='noopener noreferrer' target='_blank'>
+                  <a
+                    className='leading-8 company-name'
+                    rel='noopener noreferrer'
+                    target='_blank'>
                     {t(activeExperience.company)}
                   </a>
                 </Link>

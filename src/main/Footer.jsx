@@ -2,15 +2,15 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { SocialIcon } from '@/components/Nav';
-import { socialMedia } from 'data';
+import { SocialIcon } from 'components/nav';
+import { SOCIAL_MEDIA } from 'data';
 
 const Footer = () => {
   return (
     <footer className='footer'>
       <div className='social-media'>
         <ul className='social-media-list '>
-          {socialMedia.map((item, index) => {
+          {SOCIAL_MEDIA.map((item, index) => {
             return (
               <li key={index} className='social-media-item'>
                 <SocialIcon {...item} />

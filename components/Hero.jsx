@@ -1,7 +1,6 @@
 /** @format */
 
 import React from 'react';
-import { about } from 'data';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import useAnimate from 'hooks/useAnimate';
@@ -21,7 +20,11 @@ const Hero = () => {
   );
 
   return (
-    <motion.section className='hero-container' id='home' key='hero' animate={animation}>
+    <motion.section
+      className='hero-container'
+      id='home'
+      key='hero'
+      animate={animation}>
       <div>
         <h4 className='hero-head'>{t('Hero_head')}</h4>
       </div>
@@ -34,16 +37,17 @@ const Hero = () => {
           <a className='tracking-normal dark:text-main/90 text-primary-blue/90'>
             {t('Hero_nickname')}
           </a>
-          .
         </h2>
       </div>
       <div>
-        <h4 className='hero-description'>{t(about.description1)}</h4>
+        <h4 className='hero-description'>{t('Hero_description')}</h4>
       </div>
       <div>
-        <Link scroll={false} href='/resume.pdf' locale='en'>
+        <Link scroll={false} href={`/Harry Chen's Resume.pdf`} locale='en'>
           <a rel='noopener noreferrer' target='_blank'>
-            <span typeof='button' className='px-10 rounded-sm btn btn--outline hero-resume'>
+            <span
+              typeof='button'
+              className='px-10 rounded-sm btn btn--outline hero-resume'>
               {t('Hero_resume')}
             </span>
           </a>

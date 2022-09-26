@@ -1,8 +1,8 @@
 /** @format */
 
 import { motion } from 'framer-motion';
-import { SocialIcon } from './';
-import { socialMedia } from 'data';
+import { SocialIcon } from '.';
+import { SOCIAL_MEDIA } from 'data';
 import { easing } from 'utils/animation/framerAnimations';
 
 const container = {
@@ -27,7 +27,7 @@ const SocialBar = () => {
       initial='hidden'
       animate='show'>
       <ul className='left-list '>
-        {socialMedia.map((item, index) => {
+        {SOCIAL_MEDIA.map((item, index) => {
           return (
             <li className='left-list-item' key={index}>
               <SocialIcon {...item} />

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React, { useEffect } from 'react';
-import { sections } from 'data';
+import { SECTIONS } from 'data';
 
 const container = {
   hidden: { opacity: 0 },
@@ -79,7 +79,7 @@ const Scrollbar = () => {
       initial='hidden'
       animate='show'>
       <li className='scrollbar-item selected'></li>
-      {sections.map(index => (
+      {SECTIONS.map(index => (
         <li key={index} className='scrollbar-item '></li>
       ))}
     </motion.ul>

@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FiGithub, FiLink2 } from 'react-icons/fi';
-import { projects } from 'data';
-import { BiArrowToRight } from 'react-icons/bi';
+import { PROJECTS } from 'data';
 import useAnimate from 'hooks/useAnimate';
 import { useTranslation } from 'next-i18next';
 
@@ -32,7 +31,7 @@ const Project = () => {
       id='project'>
       <h2 className='section-heading'>{t('Project_heading')}</h2>
       <ul className='project-list '>
-        {projects.map((project, index) => {
+        {PROJECTS.map((project, index) => {
           const github_link = project.github === '' ? '/' : project.github;
           const page_link = project.page_link === '' ? '/' : project.page_link;
           return (
@@ -76,7 +75,9 @@ const Project = () => {
                   </div>
                 </div>
               </div>
-              <motion.div className='rounded-md project-image' whileHover={{ scale: 1.1 }}>
+              <motion.div
+                className='rounded-md project-image'
+                whileHover={{ scale: 1.1 }}>
                 <Image
                   src={project.image}
                   alt='photo'

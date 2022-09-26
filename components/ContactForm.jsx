@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import Layout from '../src/main/Layout';
 import { AnimatedLetters } from '@/components/animate';
 import { spinTransition } from 'utils/animation/framerAnimations';
 import emailjs from '@emailjs/browser';
@@ -95,6 +94,7 @@ const ContactForm = () => {
         setTimeout(() => {
           setIsSend(false);
         }, 2000);
+        formRef.current.reset();
       } catch (error) {
         setIsLoading(false);
         errors.push({ id: 'send', error: 'Something went wrong!!' });
@@ -229,7 +229,9 @@ const InputField = props => {
   const { label, type, name, field, placeholder } = props;
   return (
     <>
-      <label htmlFor={name} className='text-primary-blue dark:text-main mobile:text-sm'>
+      <label
+        htmlFor={name}
+        className='text-primary-blue dark:text-main mobile:text-sm'>
         {label}
       </label>
       {field ? (
