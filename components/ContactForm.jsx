@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import Layout from '../src/main/Layout';
 import { AnimatedLetters } from '@/components/animate';
 import { spinTransition } from 'utils/animation/framerAnimations';
 import emailjs from '@emailjs/browser';
