@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FiGithub, FiLink2 } from 'react-icons/fi';
 import { PROJECTS } from 'data';
-import useAnimate from 'hooks/useAnimate';
+import useAnimate from 'src/hooks/useAnimate';
 import { useTranslation } from 'next-i18next';
 
 const Project = () => {
