@@ -5,7 +5,7 @@ import { ABOUT } from 'data';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { useTheme } from 'next-themes';
-import useAnimate from 'hooks/useAnimate';
+import useAnimate from 'src/hooks/useAnimate';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 

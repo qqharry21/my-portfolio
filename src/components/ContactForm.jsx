@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { AnimatedLetters } from '@/components/animate';
-import { spinTransition } from 'utils/animation/framerAnimations';
+import { AnimatedLetters } from 'src/components/animate';
+import { spinTransition } from 'src/utils/animation/framerAnimations';
 import emailjs from '@emailjs/browser';
 
 import { MdOutlineLocalPhone, MdMailOutline } from 'react-icons/md';

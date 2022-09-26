@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { EXPERIENCES } from 'data';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import Link from 'next/link';
-import useAnimate from 'hooks/useAnimate';
+import useAnimate from 'src/hooks/useAnimate';
 import { useTranslation } from 'next-i18next';
 
 const Experience = () => {

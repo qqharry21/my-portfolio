@@ -3,12 +3,16 @@
 import { motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import React from 'react';
-import { page } from '../../utils/animation/framerAnimations';
+import { page } from '../utils/animation/framerAnimations';
 
 const Layout = ({ children, title, description }) => {
   return (
     <>
-      <NextSeo title={title} description={description} openGraph={{ title, description }} />
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{ title, description }}
+      />
       <motion.main
         className={`main`}
         id='main'

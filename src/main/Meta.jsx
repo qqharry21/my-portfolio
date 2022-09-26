@@ -2,7 +2,7 @@
 
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
-import { URL } from 'lib/server';
+import { URL } from 'src/lib/server';
 
 const Meta = ({ title, keywords, description }) => {
   return (
@@ -47,7 +47,8 @@ const Meta = ({ title, keywords, description }) => {
 
 Meta.defaultProps = {
   title: 'Harry Chen | Frontend Developer',
-  keywords: 'web development, programming, web design, react js, tailwindcss, next js',
+  keywords:
+    'web development, programming, web design, react js, tailwindcss, next js',
   description: "Harry Chen's portfolio, developer.",
 };
 

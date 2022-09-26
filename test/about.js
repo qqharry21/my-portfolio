@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../src/main/Layout';
 import Image from 'next/image';
-import { AnimatedLetters } from '@/components/animate';
+import { AnimatedLetters } from 'src/components/animate';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
 const AboutPage = () => {

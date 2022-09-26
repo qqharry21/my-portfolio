@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { SocialIcon } from '.';
 import { SOCIAL_MEDIA } from 'data';
-import { easing } from 'utils/animation/framerAnimations';
+import { easing } from 'src/utils/animation/framerAnimations';
 
 const container = {
   hidden: { opacity: 0, y: 200 },

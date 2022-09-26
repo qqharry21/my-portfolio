@@ -1,6 +1,6 @@
 /** @format */
 import React from 'react';
-import { About, Contact, Experience, Hero, Project } from 'components';
+import { About, Contact, Experience, Hero, Project } from 'src/components';
 import { Layout } from '../main';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18nextConfig from 'next-i18next.config';

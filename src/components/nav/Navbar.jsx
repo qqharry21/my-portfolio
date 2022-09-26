@@ -5,12 +5,12 @@ import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { motion } from 'framer-motion';
-import { fadeIn } from 'utils/animation/framerAnimations';
+import { fadeIn } from 'src/utils/animation/framerAnimations';
 import Link from 'next/link';
 import { MdLanguage } from 'react-icons/md';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { CommonUtils } from 'utils/CommonUtils';
+import { CommonUtils } from 'src/utils/CommonUtils';
 
 const navItem = {
   hidden: { opacity: 0, translateX: 100, translateY: -100 },
