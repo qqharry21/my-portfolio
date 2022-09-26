@@ -7,7 +7,7 @@ import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ScrollToTop } from 'components';
-import { Header, EmailBar, SocialBar } from '@/components/Nav';
+import { Header, EmailBar, SocialBar } from '@/components/nav';
 import { Meta, Footer, Loader } from '../main';
 import nextI18nextConfig from 'next-i18next.config';
 
@@ -43,7 +43,9 @@ const MyApp = ({ Component, pageProps, router }) => {
             <Header path={pathname} />
             <SocialBar />
             <EmailBar />
-            <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
+            <AnimatePresence
+              exitBeforeEnter
+              onExitComplete={() => window.scrollTo(0, 0)}>
               <Component {...pageProps} key={router.route} />
             </AnimatePresence>
             <Footer />

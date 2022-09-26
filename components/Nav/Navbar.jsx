@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { MdLanguage } from 'react-icons/md';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { CommonUtils } from 'utils/CommonUtils';
 
 const navItem = {
   hidden: { opacity: 0, translateX: 100, translateY: -100 },
@@ -20,31 +21,28 @@ const navItem = {
   },
 };
 
-const Navbar = ({
-  theme,
-  isHomePage,
-  toggleTheme,
-  showMediaNavbar,
-  toggleMediaNavbar,
-}) => {
-  const navList = [
-    {
-      title: 'Nav_About',
-      href: '#about',
-    },
-    {
-      title: 'Nav_Experience',
-      href: '#experience',
-    },
-    {
-      title: 'Nav_Project',
-      href: '#project',
-    },
-    {
-      title: 'Nav_Contact',
-      href: '#contact',
-    },
-  ];
+const NAV_LIST = [
+  {
+    title: 'Nav_About',
+    href: '#about',
+  },
+  {
+    title: 'Nav_Experience',
+    href: '#experience',
+  },
+  {
+    title: 'Nav_Project',
+    href: '#project',
+  },
+  {
+    title: 'Nav_Contact',
+    href: '#contact',
+  },
+];
+
+const Navbar = props => {
+  const { theme, isHomePage, toggleTheme, showMediaNavbar, toggleMediaNavbar } =
+    props;
   const router = useRouter();
   const toggleLocale = () => {
     const lang = localStorage.getItem('lang');
@@ -59,13 +57,13 @@ const Navbar = ({
   return (
     <nav className='center nav'>
       <motion.ul className={`nav__list ${showMediaNavbar ? 'flex' : ''}`}>
-        {navList.map((list, index) => {
+        {NAV_LIST.map((list, index) => {
           return (
             <NavbarItem
               key={index}
-              {...list}
               index={index}
               toggleMediaNavbar={toggleMediaNavbar}
+              {...list}
             />
           );
         })}
@@ -113,7 +111,8 @@ const Navbar = ({
   );
 };
 
-const NavbarItem = ({ toggleMediaNavbar, title, href, index }) => {
+const NavbarItem = props => {
+  const { toggleMediaNavbar, title, href, index } = props;
   const { t } = useTranslation();
   return (
     <motion.li
@@ -123,6 +122,7 @@ const NavbarItem = ({ toggleMediaNavbar, title, href, index }) => {
       transition={{ delay: 0.1 * index, ease: 'easeIn' }}>
       <Link href={href} shallow scroll={false}>
         <a onClick={toggleMediaNavbar} className='link link--nav'>
+          <span aria-hidden='true'>{CommonUtils.leftPad(index, 2, '0')}</span>
           {t(title)}
         </a>
       </Link>

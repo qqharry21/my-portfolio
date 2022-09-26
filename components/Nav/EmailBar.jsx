@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { about } from 'data';
+import { ABOUT } from 'data';
 import { easing } from 'utils/animation/framerAnimations';
 
 const container = {
@@ -27,8 +27,8 @@ const EmailBar = () => {
       initial='hidden'
       animate='show'>
       <div className='right-list '>
-        <Link href={`mailto:${about.email}?subject=Hi, Harry`}>
-          <a className='right-link vertical-rl'>{about.email}</a>
+        <Link href={`mailto:${ABOUT.email}?subject=Hi, Harry`}>
+          <a className='right-link vertical-rl'>{ABOUT.email}</a>
         </Link>
       </div>
     </motion.div>

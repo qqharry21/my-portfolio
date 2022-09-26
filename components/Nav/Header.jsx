@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-import { Navbar } from './';
+import { Navbar } from '.';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
@@ -83,7 +83,12 @@ const Header = ({ path }) => {
             </Link>
           </h1>
         ) : (
-          <Link className='mt-4 laptop:mt-12' href='/' passHref scroll={false} shallow>
+          <Link
+            className='mt-4 laptop:mt-12'
+            href='/'
+            passHref
+            scroll={false}
+            shallow>
             <a>
               {theme === 'light' ? (
                 <Image src='/light_logo.svg' alt='Logo' width={100} height={100} />

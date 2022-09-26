@@ -95,6 +95,7 @@ const ContactForm = () => {
         setTimeout(() => {
           setIsSend(false);
         }, 2000);
+        formRef.current.reset();
       } catch (error) {
         setIsLoading(false);
         errors.push({ id: 'send', error: 'Something went wrong!!' });
@@ -229,7 +230,9 @@ const InputField = props => {
   const { label, type, name, field, placeholder } = props;
   return (
     <>
-      <label htmlFor={name} className='text-primary-blue dark:text-main mobile:text-sm'>
+      <label
+        htmlFor={name}
+        className='text-primary-blue dark:text-main mobile:text-sm'>
         {label}
       </label>
       {field ? (
