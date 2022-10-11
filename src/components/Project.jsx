@@ -63,12 +63,12 @@ const Project = () => {
                   </ul>
                   <div className='project-links'>
                     <Link href={github_link}>
-                      <a className='project-link-icon btn'>
+                      <a className='project-link-icon btn' target='_blank'>
                         <FiGithub size={20} />
                       </a>
                     </Link>
                     <Link href={page_link}>
-                      <a className='project-link-icon btn'>
+                      <a className='project-link-icon btn' target='_blank'>
                         <FiLink2 size={20} />
                       </a>
                     </Link>
