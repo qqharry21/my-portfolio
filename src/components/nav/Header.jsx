@@ -33,7 +33,9 @@ const Header = ({ path }) => {
     const handleScroll = () => {
       const yPos = window.scrollY;
       const isScrollingUp = yPos < lastYPos;
-      yPos < 150 ? setIsVisible(true) : setIsVisible(isScrollingUp);
+      yPos < 150 || showMediaNavbar
+        ? setIsVisible(true)
+        : setIsVisible(isScrollingUp);
       setLastYPos(yPos);
     };
 
