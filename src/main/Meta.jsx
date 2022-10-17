@@ -29,27 +29,53 @@ const Meta = ({ title, keywords, description }) => {
         <link rel='icon' href='/logo.png' />
       </Head>
       <DefaultSeo
+        title='Chen Chuan Hao'
         defaultTitle={title}
-        titleTemplate='%s | Harry Chen'
+        description={description}
+        canonical={URL}
+        titleTemplate='%s | Frontend Developer'
         openGraph={{
           type: 'website',
           locale: 'zh_TW',
           url: `${URL}`,
           description: description,
           site_name: title,
-          images: [],
+          images: [
+            {
+              url: `/logo.png`,
+              width: 1000,
+              height: 1000,
+              alt: 'My Logo',
+            },
+            {
+              url: `/logo.png`,
+              width: 800,
+              height: 800,
+              alt: 'My Logo Second',
+            },
+          ],
         }}
-        canonical={URL}
+        facebook={{ appId: '299623688779110' }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
+        additionalLinkTags={[
+          {
+            rel: 'icon',
+            href: `/logo.png`,
+          },
+        ]}
       />
     </>
   );
 };
 
 Meta.defaultProps = {
-  title: 'Harry Chen | Frontend Developer',
-  keywords:
-    'web development, programming, web design, react js, tailwindcss, next js',
-  description: "Harry Chen's portfolio, developer.",
+  title: 'Chen Chuan Hao | Frontend Developer',
+  keywords: 'Chen Chuan Hao, Harry, Portfolio, Frontend, Developer',
+  description: 'My portfolio',
 };
 
 export default Meta;
