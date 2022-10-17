@@ -59,7 +59,7 @@ const Meta = ({ title, keywords, description }) => {
         twitter={{
           handle: '@handle',
           site: '@site',
-          cardType: 'summary_large_image',
+          cardType: 'app',
         }}
         additionalLinkTags={[
           {
