@@ -57,8 +57,8 @@ const Meta = ({ title, keywords, description }) => {
         }}
         facebook={{ appId: '299623688779110' }}
         twitter={{
-          handle: '@handle',
-          site: '@site',
+          handle: '@HarryChen824',
+          site: '@HarryChen824',
           cardType: 'app',
         }}
         additionalLinkTags={[
