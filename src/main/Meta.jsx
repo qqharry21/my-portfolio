@@ -64,7 +64,7 @@ const Meta = ({ title, keywords, description }) => {
         additionalLinkTags={[
           {
             rel: 'icon',
-            href: `/logo.png`,
+            href: `${URL}/logo.png`,
           },
         ]}
       />
