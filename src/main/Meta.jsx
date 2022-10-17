@@ -42,13 +42,13 @@ const Meta = ({ title, keywords, description }) => {
           site_name: title,
           images: [
             {
-              url: `/logo.png`,
+              url: `${URL}/logo.png`,
               width: 1000,
               height: 1000,
               alt: 'My Logo',
             },
             {
-              url: `/logo.png`,
+              url: `${URL}/logo.png`,
               width: 800,
               height: 800,
               alt: 'My Logo Second',
