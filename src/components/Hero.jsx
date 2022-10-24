@@ -43,7 +43,7 @@ const Hero = () => {
         <h4 className='hero-description'>{t('Hero_description')}</h4>
       </div>
       <div>
-        <Link scroll={false} href={`/pdf/Harry Chen's Resume.pdf`} locale='en'>
+        <Link scroll={false} href={`/pdf/resume.pdf`} locale='en'>
           <a rel='noopener noreferrer' target='_blank'>
             <span
               typeof='button'
