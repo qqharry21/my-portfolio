@@ -54,7 +54,7 @@ const Experience = () => {
               <motion.button
                 className='experience-tab'
                 id={`tab-${index}`}
-                key={index}
+                key={`experience-tab-${index}`}
                 tabIndex={index}
                 onClick={() => {
                   toggleTab(index);
@@ -102,7 +102,9 @@ const Experience = () => {
 
               <motion.ul>
                 {activeExperience.descriptions.map((description, index) => (
-                  <motion.li className='experience-description' key={index}>
+                  <motion.li
+                    className='experience-description'
+                    key={`description-${index}`}>
                     {t(description)}
                   </motion.li>
                 ))}

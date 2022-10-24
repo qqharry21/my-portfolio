@@ -29,7 +29,7 @@ const SocialBar = () => {
       <ul className='left-list '>
         {SOCIAL_MEDIA.map((item, index) => {
           return (
-            <li className='left-list-item' key={index}>
+            <li className='left-list-item' key={`social-${index}`}>
               <SocialIcon {...item} />
             </li>
           );

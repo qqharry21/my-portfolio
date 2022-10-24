@@ -10,6 +10,7 @@ import { MdOutlineLocalPhone, MdMailOutline } from 'react-icons/md';
 import { BiMailSend } from 'react-icons/bi';
 import { RiCheckFill, RiLoader2Fill } from 'react-icons/ri';
 import { useTranslation } from 'next-i18next';
+import InputField from './InputField';
 
 const ContactForm = () => {
   const { t } = useTranslation('contact');
@@ -181,7 +182,7 @@ const ContactForm = () => {
           ref={formRef}
           onSubmit={handleSubmit}>
           {formInputs.map((input, index) => (
-            <div className='flex flex-col w-full laptop:mb-4' key={index}>
+            <div className='flex flex-col w-full laptop:mb-4' key={`input-${index}`}>
               <InputField {...input} />
               <motion.div id='error' className='text-red-500/70 mobile:text-sm'>
                 {error.find(error => error.id === input.name)?.error}
@@ -225,30 +226,6 @@ const ContactForm = () => {
   );
 };
 
-const InputField = props => {
-  const { label, type, name, field, placeholder } = props;
-  return (
-    <>
-      <label
-        htmlFor={name}
-        className='text-primary-blue dark:text-main mobile:text-sm'>
-        {label}
-      </label>
-      {field ? (
-        field
-      ) : (
-        <input
-          id={name}
-          type={type}
-          name={name}
-          placeholder={placeholder}
-          className='bg-transparent border-0 border-b-2 rounded-none outline-none dark:border-gray-500 mobile:text-sm'
-        />
-      )}
-    </>
-  );
-};
-
 const mailIconVariants = {
   rest: { opacity: 0, x: -15, ease: 'linear', duration: 0.2 },
   hover: {
@@ -260,26 +237,5 @@ const mailIconVariants = {
     },
   },
 };
-
-// const textMotion = {
-//   rest: {
-//     color: 'grey',
-//     x: 0,
-//     transition: {
-//       duration: 2,
-//       type: 'tween',
-//       ease: 'easeIn',
-//     },
-//   },
-//   hover: {
-//     color: 'blue',
-//     x: 30,
-//     transition: {
-//       duration: 0.4,
-//       type: 'tween',
-//       ease: 'easeOut',
-//     },
-//   },
-// };
 
 export default ContactForm;

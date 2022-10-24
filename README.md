@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- @format -->
 
-## Getting Started
+![Logo](https://github.com/qqharry21/my-portfolio/blob/master/public/logo.png?raw=true)
 
-First, run the development server:
+# My Personal Website
+
+My first personal website.
+
+The place that can let people know me faster.
+
+## Existing Features
+
+- Light/Dark Toggle
+- Chinese/Engish language Toggle (i18n)
+- Contact form (EmailJs)
+
+## Features
+
+- Add Eslint to configure project
+- Refactor the project to typescript
+- Develop a backend system to improve the convenience of the expansion.
+  - Add about editor
+  - Add projects editor
+  - Add experiences editor
+- Develop blog to record personal notes
+
+## Color Reference
+
+| Color         | Hex                                                              |
+| ------------- | ---------------------------------------------------------------- |
+| Main          | ![#64ffda](https://via.placeholder.com/10/64ffda?text=+) #64ffda |
+| Primary blue  | ![#2978b5](https://via.placeholder.com/10/2978b5?text=+) #2978b5 |
+| Primary dark  | ![#23283e](https://via.placeholder.com/10/23283e?text=+) #23283e |
+| Primary white | ![#e2e8f0](https://via.placeholder.com/10/e2e8f0?text=+) #e2e8f0 |
+
+## Deployment
+
+To deploy this project run
 
 ```bash
-npm run dev
-# or
-yarn dev
+  npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Feedback
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you have any feedback, please reach out to me at qqharry21@gmail.com

@@ -35,7 +35,7 @@ const Project = () => {
           const github_link = project.github === '' ? '/' : project.github;
           const page_link = project.page_link === '' ? '/' : project.page_link;
           return (
-            <li className='project-panel group' key={index}>
+            <li className='project-panel group' key={`project-panel-${index}`}>
               <div className='project-content'>
                 <div>
                   <p className='project-label'>{t(project.label)}</p>
@@ -56,7 +56,10 @@ const Project = () => {
                   </div>
                   <ul className='project-tech-list'>
                     {project.techniques.map((tech, index) => (
-                      <li className='project-tech-item' key={index} text={tech}>
+                      <li
+                        className='project-tech-item'
+                        key={`project-tech-${index}`}
+                        text={tech}>
                         {tech}
                       </li>
                     ))}

@@ -12,7 +12,7 @@ const Footer = () => {
         <ul className='social-media-list '>
           {SOCIAL_MEDIA.map((item, index) => {
             return (
-              <li key={index} className='social-media-item'>
+              <li key={`social-footer-${index}`} className='social-media-item'>
                 <SocialIcon {...item} />
               </li>
             );

@@ -1,7 +1,6 @@
 /** @format */
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { btnIconVariants } from 'src/utils/animation/framerAnimations';

@@ -80,7 +80,7 @@ const Scrollbar = () => {
       animate='show'>
       <li className='scrollbar-item selected'></li>
       {SECTIONS.map(index => (
-        <li key={index} className='scrollbar-item '></li>
+        <li key={`section-${index}`} className='scrollbar-item '></li>
       ))}
     </motion.ul>
   );

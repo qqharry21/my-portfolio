@@ -1,19 +1,15 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ABOUT } from 'data';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
-import { useTheme } from 'next-themes';
 import useAnimate from 'src/hooks/useAnimate';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 
 const About = () => {
   const { t } = useTranslation('about');
-  const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState(t('About_description'));
-  const { theme } = useTheme();
   const isMobile = useMediaQuery({ query: '(max-width: 425px)' });
   const { ref, animation } = useAnimate(
     {
@@ -26,12 +22,6 @@ const About = () => {
     },
     { opacity: 0 }
   );
-
-  const handleClick = () => {
-    setLoading(true);
-    setDescription(t('Test'));
-    setLoading(false);
-  };
 
   return (
     <motion.section
@@ -68,7 +58,7 @@ const About = () => {
           </h3>
           <ul className='skill-list'>
             {ABOUT.skills.map((skill, index) => (
-              <li key={index} className='skill-item'>
+              <li key={`skill-${index}`} className='skill-item'>
                 {skill}
               </li>
             ))}

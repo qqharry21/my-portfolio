@@ -93,9 +93,19 @@ const Header = ({ path }) => {
             shallow>
             <a>
               {theme === 'light' ? (
-                <Image src='/light_logo.svg' alt='Logo' width={100} height={100} />
+                <Image
+                  src='/svg/light_logo.svg'
+                  alt='Logo'
+                  width={100}
+                  height={100}
+                />
               ) : (
-                <Image src='/dark_logo.svg' alt='Logo' width={100} height={100} />
+                <Image
+                  src='/svg/dark_logo.svg'
+                  alt='Logo'
+                  width={100}
+                  height={100}
+                />
               )}
             </a>
           </Link>
