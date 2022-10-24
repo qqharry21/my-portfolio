@@ -16,7 +16,6 @@ The place that can let people know me faster.
 
 ## Features
 
-- Add Eslint to configure project
 - Refactor the project to typescript
 - Develop a backend system to improve the convenience of the expansion.
   - Add about editor
