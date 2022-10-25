@@ -70,7 +70,7 @@ export const PROJECTS = [
     label: 'Project_done',
     title: 'Project_title2',
     description: 'Project_description2',
-    page_link: '',
+    page_link: '/',
     github: 'https://github.com/qqharry21/beautyhair-secretary-linebot-app',
     image:
       'https://res.cloudinary.com/haotocode/image/upload/v1657009939/my_portfolio/Secretary_LineBot_l1cm79.png',
