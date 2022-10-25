@@ -17,12 +17,7 @@ const MyApp = ({ Component, pageProps, router }) => {
 
   useEffect(() => {
     const handleRouteChange = () => {
-      const html = document.querySelector('html');
-      html.style.scrollBehavior = 'auto';
       window.scrollTo(0, 0);
-      setTimeout(() => {
-        html.style.scrollBehavior = 'smooth';
-      }, 1000);
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
@@ -43,11 +38,7 @@ const MyApp = ({ Component, pageProps, router }) => {
             <Header path={pathname} />
             <SocialBar />
             <EmailBar />
-            <AnimatePresence
-              exitBeforeEnter
-              onExitComplete={() => window.scrollTo(0, 0)}>
-              <Component {...pageProps} key={router.route} />
-            </AnimatePresence>
+            <Component {...pageProps} key={router.route} />
             <Footer />
           </>
         )}

@@ -85,12 +85,7 @@ const Header = ({ path }) => {
             </Link>
           </h1>
         ) : (
-          <Link
-            className='mt-4 laptop:mt-12'
-            href='/'
-            passHref
-            scroll={false}
-            shallow>
+          <Link className='mt-4 laptop:mt-12' href='/' scroll={false} shallow>
             <a>
               {theme === 'light' ? (
                 <Image
